@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "atom"
+      ]
+    },
+    "path": {
+      "description": "The path to the atom in the data",
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "path"
+  ],
+  "additionalProperties": false
+}
