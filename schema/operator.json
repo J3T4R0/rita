@@ -10,9 +10,7 @@
           "enum": [
             "and",
             "or",
-            "xor",
-            "forall",
-            "exists"
+            "xor"
           ]
         },
         "parameters": {
