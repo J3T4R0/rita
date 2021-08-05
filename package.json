@@ -52,6 +52,7 @@
     }
   ],
   "devDependencies": {
+    "@semantic-release/git": "^9.0.0",
     "@size-limit/preset-small-lib": "^5.0.1",
     "bestzip": "^2.2.0",
     "husky": "^7.0.1",
