@@ -1,4 +1,4 @@
-import {Term} from "../elements";
+import {Term} from "./Term";
 
 export class Rule {
     public readonly id: string;

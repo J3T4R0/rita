@@ -1,4 +1,4 @@
-import {Term} from "../elements"
+import {Term} from "./Term"
 
 export class Atom extends Term{
     public path: string;
