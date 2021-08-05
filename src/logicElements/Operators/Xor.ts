@@ -1,7 +1,6 @@
-import Operator from "./Operator";
-import Term from "../Term";
+import {Term, Operator} from "../../elements";
 
-export default class Xor extends Operator {
+export class Xor extends Operator {
     private static xor(a: boolean, b: boolean): boolean {
         return (a || b) && !(a && b)
     }

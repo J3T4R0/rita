@@ -1,6 +1,6 @@
-import Term from "./Term";
+import {Term} from "../elements"
 
-export default class Atom extends Term{
+export class Atom extends Term{
     public path: string;
 
     constructor(path: string) {
@@ -17,8 +17,4 @@ export default class Atom extends Term{
         return !!this.path;
     }
 
-    static parseAtom(jsonRuleset: Record<string, any>): Atom {
-        return new Atom(jsonRuleset["path"]);
-    }
-
-};
+}

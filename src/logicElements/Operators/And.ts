@@ -1,7 +1,6 @@
-import Operator from "./Operator";
-import Term from "../Term";
+import {Operator, Term} from "../../elements";
 
-export default class And extends Operator {
+export class And extends Operator {
     evaluate(data: Record<string, any>): boolean {
         if (!this.validate()) {
             throw new Error("'and' needs at least two parameters")

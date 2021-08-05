@@ -1,7 +1,6 @@
-import Operator from "./Operators/Operator";
-import Term from "./Term";
+import {Term} from "../elements";
 
-export default class Rule {
+export class Rule {
     public readonly id: string;
     public rule: Term;
 
@@ -11,8 +10,7 @@ export default class Rule {
         this.rule = rule;
     }
 
-
-    static parseRule(jsonRuleset: Record<string, any>):Rule {
-        return new Rule(jsonRuleset["id"], Operator.parseTerm(jsonRuleset["rule"]));
+    public evaluate(data: Record<string, any>): boolean {
+        return this.rule.evaluate(data);
     }
 };

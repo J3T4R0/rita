@@ -1,6 +1,6 @@
-import Operator from "./Operator";
+import {Operator} from "../../elements";
 
-export default class Not extends Operator{
+export class Not extends Operator{
     evaluate(data: Record<string, any>): boolean {
         if (!this.validate()) {
             throw new Error("'not' accepts only one parameter")
