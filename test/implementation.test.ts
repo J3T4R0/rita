@@ -7,7 +7,15 @@ const exampleData = {
         paymentDetails: {
             payed: true
         }
-    }
+    },
+    customers: [
+        {
+            rated: false
+        },
+        {
+            rated: true
+        }
+    ]
 }
 
 const ruleTemplate = {
@@ -41,6 +49,16 @@ describe("Test Atom", () => {
             rule: {
                 type: "atom",
                 path: "visit.paymentDetails.payed"
+            }
+        });
+        expect(rule.evaluate(exampleData)).toBe(true);
+    });
+    it("second customer rated", () => {
+        const rule = parseRule({
+            ...ruleTemplate,
+            rule: {
+                type: "atom",
+                path: "customers[1].rated"
             }
         });
         expect(rule.evaluate(exampleData)).toBe(true);
