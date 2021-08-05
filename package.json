@@ -1,76 +1,150 @@
 {
 
   "name": "@educorvi/rita",
+
   "private": false,
+
   "description": "JSON Schema for rule-based evaluation and an Typescript Implementation to evaluate it",
-  "version": "0.0.0-development",
+
+  "version": "1.0.0",
+
   "license": "MIT",
+
   "main": "dist/index.js",
+
   "typings": "dist/index.d.ts",
+
   "files": [
+
     "dist",
+
     "src",
+
     "schema"
+
   ],
+
   "engines": {
+
     "node": ">=10"
+
   },
+
   "scripts": {
+
     "start": "tsdx watch",
+
     "build": "tsdx build",
+
     "postbuild": "npm run zip",
+
     "prezip": "mkdirp dist_zip",
+
     "zip": "npm run zip:dist && npm run zip:schema",
+
     "zip:dist": "bestzip dist_zip/dist.zip dist/*",
+
     "zip:schema": "bestzip dist_zip/schema.zip schema/*",
+
     "test": "tsdx test",
+
     "lint": "tsdx lint",
+
     "prepare": "npm run build",
+
     "size": "size-limit",
+
     "analyze": "size-limit --why",
+
     "semantic-release": "semantic-release"
+
   },
+
   "peerDependencies": {},
+
   "husky": {
+
     "hooks": {
+
       "pre-commit": "tsdx lint"
+
     }
+
   },
+
   "prettier": {
+
     "printWidth": 80,
+
     "semi": true,
+
     "singleQuote": true,
+
     "trailingComma": "es5"
+
   },
+
   "author": "neferin12",
+
   "module": "dist/rita.esm.js",
+
   "size-limit": [
+
     {
+
       "path": "dist/rita.cjs.production.min.js",
+
       "limit": "10 KB"
+
     },
+
     {
+
       "path": "dist/rita.esm.js",
+
       "limit": "10 KB"
+
     }
+
   ],
+
   "devDependencies": {
+
     "@semantic-release/git": "^9.0.0",
+
     "@size-limit/preset-small-lib": "^5.0.1",
+
     "bestzip": "^2.2.0",
+
     "husky": "^7.0.1",
+
     "mkdirp": "^1.0.4",
+
     "semantic-release": "^17.4.4",
+
     "size-limit": "^5.0.1",
+
     "tsdx": "^0.14.1",
+
     "tslib": "^2.3.0",
+
     "typescript": "^4.3.5"
+
   },
+
   "dependencies": {
+
     "ajv": "^8.6.2"
+
   },
+
   "repository": {
+
     "type": "git",
+
     "url": "https://github.com/educorvi/rita.git"
+
   }
+
 }
+
