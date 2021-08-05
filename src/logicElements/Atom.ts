@@ -8,9 +8,22 @@ export class Atom extends Term{
         this.path = path;
     }
 
+    private static getPropertyByString(o: any, s: string): boolean {
+        s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+        s = s.replace(/^\./, '');           // strip a leading dot
+        const a = s.split('.');
+        for (let i = 0, n = a.length; i < n; ++i) {
+            const k = a[i];
+            if (k in o) {
+                o = o[k];
+            } else {
+                throw new Error("Undefinded path in data: "+s)
+            }
+        }
+        return o;
+    }
     evaluate(data: Record<string, any>): boolean {
-        //TODO implement path deeper than immediate access
-        return data[this.path];
+        return Atom.getPropertyByString(data, this.path);
     }
 
     validate(): boolean {
