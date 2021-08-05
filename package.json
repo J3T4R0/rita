@@ -1,4 +1,8 @@
 {
+
+  "name": "@educorvi/rita",
+  "private": false,
+  "description": "JSON Schema for rule-based evaluation and an Typescript Implementation to evaluate it",
   "version": "0.0.0-development",
   "license": "MIT",
   "main": "dist/index.js",
@@ -38,7 +42,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "rita",
   "author": "neferin12",
   "module": "dist/rita.esm.js",
   "size-limit": [
