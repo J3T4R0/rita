@@ -13,4 +13,11 @@ export class Rule {
     public evaluate(data: Record<string, any>): boolean {
         return this.rule.evaluate(data);
     }
-};
+
+    public toJsonReady(): Record<string, any> {
+        return {
+            id: this.id,
+            rule: this.rule.toJsonReady()
+        }
+    }
+}

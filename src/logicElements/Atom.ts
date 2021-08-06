@@ -30,4 +30,11 @@ export class Atom extends Term{
         return !!this.path;
     }
 
+    toJsonReady(): Record<string, any> {
+        return {
+            type: 'atom',
+            path: this.path
+        };
+    }
+
 }

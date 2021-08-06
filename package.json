@@ -56,8 +56,11 @@
   "devDependencies": {
     "@semantic-release/git": "^9.0.0",
     "@size-limit/preset-small-lib": "^5.0.1",
+    "@types/deep-equal": "^1.0.1",
+    "@types/madge": "^5.0.0",
     "bestzip": "^2.2.0",
     "husky": "^7.0.1",
+    "madge": "^5.0.1",
     "mkdirp": "^1.0.4",
     "semantic-release": "^17.4.4",
     "size-limit": "^5.0.1",

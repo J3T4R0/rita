@@ -11,6 +11,12 @@ export abstract class Operator extends Term {
     abstract evaluate(data: Record<string, any>): boolean
 
     abstract validate(): boolean;
+
+    toJsonReady(): Record<string, any> {
+        return {
+            parameters: this.parameters.map(item => item.toJsonReady())
+        };
+    }
 }
 
 export class And extends Operator {
@@ -25,6 +31,12 @@ export class And extends Operator {
         return this.parameters.length > 1;
     }
 
+    toJsonReady(): Record<string, any> {
+        return {
+            ...super.toJsonReady(),
+            type: 'and'
+        };
+    }
 }
 
 export class Not extends Operator{
@@ -39,6 +51,12 @@ export class Not extends Operator{
         return this.parameters.length === 1;
     }
 
+    toJsonReady(): Record<string, any> {
+        return {
+            ...super.toJsonReady(),
+            type: 'not'
+        };
+    }
 }
 
 export class Or extends Operator {
@@ -53,6 +71,12 @@ export class Or extends Operator {
         return this.parameters.length > 1;
     }
 
+    toJsonReady(): Record<string, any> {
+        return {
+            ...super.toJsonReady(),
+            type: 'or'
+        };
+    }
 }
 
 export class Xor extends Operator {
@@ -71,4 +95,10 @@ export class Xor extends Operator {
         return this.parameters.length > 1;
     }
 
+    toJsonReady(): Record<string, any> {
+        return {
+            ...super.toJsonReady(),
+            type: 'xor'
+        };
+    }
 }

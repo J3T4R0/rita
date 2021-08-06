@@ -34,6 +34,12 @@ describe("Validate Rule example", () => {
     it("Wrong Rule", () => {
         const result = parser.validateRuleJSON(wrongExampleRule);
         expect(result.valid).toBe(false);
-        expect(result.errors.length).toBeGreaterThan(0);
+        expect(result.errors).not.toHaveLength(0)
     });
+});
+
+it("convert to Json", () => {
+    const ruleset = Parser.parseRuleSet(exampleRule);
+    const json = Parser.toJson(ruleset);
+    expect(JSON.parse(json)).toEqual(exampleRule);
 });

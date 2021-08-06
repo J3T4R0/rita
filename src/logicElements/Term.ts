@@ -9,4 +9,9 @@ export abstract class Term {
      * Check if the term is valid
      */
     abstract validate(): boolean;
+
+    /**
+     * Prepares object for conversion into rita json
+     */
+    abstract toJsonReady(): Record<string, any>;
 }
