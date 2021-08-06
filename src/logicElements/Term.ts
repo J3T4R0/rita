@@ -12,6 +12,7 @@ export abstract class Term {
 
     /**
      * Prepares object for conversion into rita json
+     * @internal
      */
     abstract toJsonReady(): Record<string, any>;
 }

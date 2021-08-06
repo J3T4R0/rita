@@ -1,8 +1,18 @@
 import {Term} from "./Term"
 
+/**
+ * Parent class for all operators
+ */
 export abstract class Operator extends Term {
+    /**
+     * The parameters of the operator
+     */
     public parameters: Array<Term>
 
+    /**
+     * @constructor
+     * @param parameters The parameters of the operator
+     */
     constructor(parameters: Array<Term>) {
         super();
         this.parameters = parameters;
@@ -19,6 +29,10 @@ export abstract class Operator extends Term {
     }
 }
 
+/**
+ * "And" Operator
+ * Behaves like "&&" in JavaScript when evaluated
+ */
 export class And extends Operator {
     evaluate(data: Record<string, any>): boolean {
         if (!this.validate()) {
@@ -39,6 +53,10 @@ export class And extends Operator {
     }
 }
 
+/**
+ * "Not" Operator
+ * Behaves like "!" in JavaScript when evaluated
+ */
 export class Not extends Operator{
     evaluate(data: Record<string, any>): boolean {
         if (!this.validate()) {
@@ -59,6 +77,10 @@ export class Not extends Operator{
     }
 }
 
+/**
+ * "Or" Operator
+ * Behaves like || in JavaScript when evaluated
+ */
 export class Or extends Operator {
     evaluate(data: Record<string, any>): boolean {
         if (!this.validate()) {
@@ -79,6 +101,11 @@ export class Or extends Operator {
     }
 }
 
+/**
+ * "Xor" Operator
+ * Exclusive Or
+ * NOT the same thing as "only on" for more than two parameters, e.g.: true xor true xor true = (true xor true) xor true = false xor true = true
+ */
 export class Xor extends Operator {
     private static xor(a: boolean, b: boolean): boolean {
         return (a || b) && !(a && b)
