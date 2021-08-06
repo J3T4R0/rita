@@ -1,2 +1,3 @@
 export {Rule} from "./elements"
-export * from "./Parser"
+import Parser from "./Parser"
+export {Parser}
