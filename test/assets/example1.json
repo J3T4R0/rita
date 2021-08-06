@@ -8,14 +8,14 @@
         "parameters": [
           {
             "type": "atom",
-            "path": "mitglied"
+            "path": "member"
           },
           {
             "type": "not",
             "parameters": [
               {
                 "type": "atom",
-                "path": "mitarbeiter"
+                "path": "employee"
               }
             ]
           }

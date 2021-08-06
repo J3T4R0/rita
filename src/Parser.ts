@@ -1,5 +1,8 @@
 import {Term, Operator, Atom, Rule, And, Not, Or, Xor} from "./elements"
 
+export function parseRuleSet(jsonRuleset: Record<string, any>): Array<Rule> {
+    return jsonRuleset.rules.map((item: Record<string, any>) => parseRule(item))
+}
 
 export function parseRule(jsonRuleset: Record<string, any>):Rule {
     return new Rule(jsonRuleset["id"], parseTerm(jsonRuleset["rule"]));
