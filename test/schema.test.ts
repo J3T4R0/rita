@@ -2,7 +2,6 @@ import Ajv from 'ajv/dist/2019';
 import {Parser} from "../src";
 import exampleRule from "./assets/example1.json"
 import wrongExampleRule from "./assets/example_wrong.json"
-import deepEqual from "deep-equal"
 
 const schemas = [
     {name: 'Atom', schema: () => import('../src/schema/atom.json')},
@@ -35,12 +34,12 @@ describe("Validate Rule example", () => {
     it("Wrong Rule", () => {
         const result = parser.validateRuleJSON(wrongExampleRule);
         expect(result.valid).toBe(false);
-        expect(result.errors.length).toBeGreaterThan(0);
+        expect(result.errors).not.toHaveLength(0)
     });
 });
 
 it("convert to Json", () => {
     const ruleset = Parser.parseRuleSet(exampleRule);
     const json = Parser.toJson(ruleset);
-    expect(deepEqual(exampleRule, JSON.parse(json))).toBe(true);
+    expect(JSON.parse(json)).toEqual(exampleRule);
 });
