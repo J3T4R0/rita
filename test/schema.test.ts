@@ -27,12 +27,12 @@ const parser = Parser.getParser();
 
 describe("Validate Rule example", () => {
     it("Correct Rule", () => {
-        const result = parser.validateRuleJSON(exampleRule);
+        const result = parser.validateRuleSetJSON(exampleRule);
         expect(result.valid).toBe(true);
     });
 
     it("Wrong Rule", () => {
-        const result = parser.validateRuleJSON(wrongExampleRule);
+        const result = parser.validateRuleSetJSON(wrongExampleRule);
         expect(result.valid).toBe(false);
         expect(result.errors).not.toHaveLength(0)
     });
