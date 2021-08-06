@@ -28,7 +28,7 @@ export default class Parser {
         this.parser = this
     }
 
-    validateRuleJSON(json: Record<string, any>): validationResult {
+    public validateRuleJSON(json: Record<string, any>): validationResult {
         if (!this.validate) {
             throw new Error("Error compiling schema");
         }
@@ -42,15 +42,15 @@ export default class Parser {
         };
     }
 
-    static parseRuleSet(jsonRuleset: Record<string, any>): Array<Rule> {
+    public static parseRuleSet(jsonRuleset: Record<string, any>): Array<Rule> {
         return jsonRuleset.rules.map((item: Record<string, any>) => Parser.parseRule(item))
     }
 
-    static parseRule(jsonRuleset: Record<string, any>): Rule {
+    public static parseRule(jsonRuleset: Record<string, any>): Rule {
         return new Rule(jsonRuleset["id"], Parser.parseTerm(jsonRuleset["rule"]));
     }
 
-    static parseTerm(jsonRuleset: Record<string, any>): Term {
+    public static parseTerm(jsonRuleset: Record<string, any>): Term {
         switch (jsonRuleset["type"]) {
             case "atom":
                 return Parser.parseAtom(jsonRuleset);
@@ -59,7 +59,7 @@ export default class Parser {
         }
     }
 
-    static parseOperator(jsonRuleset: Record<string, any>): Operator {
+    public static parseOperator(jsonRuleset: Record<string, any>): Operator {
         const parameters: Array<Term> = []
         for (const parameter of jsonRuleset["parameters"]) {
             parameters.push(Parser.parseTerm(parameter));
@@ -78,8 +78,15 @@ export default class Parser {
         }
     }
 
-    static parseAtom(jsonRuleset: Record<string, any>): Atom {
+    public static parseAtom(jsonRuleset: Record<string, any>): Atom {
         return new Atom(jsonRuleset["path"]);
+    }
+
+    public static toJson(rules: Array<Rule>): string {
+        return JSON.stringify({
+            "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/schema/schema.json",
+            rules: rules.map(rule => rule.toJsonReady())
+        })
     }
 };
 
