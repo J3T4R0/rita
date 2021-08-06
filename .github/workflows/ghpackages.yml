@@ -17,7 +17,8 @@ jobs:
       with:
         registry-url: https://npm.pkg.github.com/
         scope: '@educorvi'
-    - run: npm ci
+    - name: Install deps and build (with cache)
+      uses: bahmutov/npm-install@v1
     - run: echo registry=https://npm.pkg.github.com/educorvi >> .npmrc
     - name: Insert repository owner as scope into package name
       run: |
