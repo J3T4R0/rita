@@ -1,6 +1,7 @@
 import Ajv from 'ajv/dist/2019';
 import {Parser} from "../src";
 import exampleRule from "./assets/example1.json"
+import wrongExampleRule from "./assets/example_wrong.json"
 
 const schemas = [
     {name: 'Atom', schema: () => import('../src/schema/atom.json')},
@@ -25,6 +26,14 @@ describe('Validate Schema against Meta-Schema', () => {
 const parser = new Parser();
 
 describe("Validate Rule example", () => {
-    const result = parser.validateRuleJSON(exampleRule);
-    console.log(result)
+    it("Correct Rule", () => {
+        const result = parser.validateRuleJSON(exampleRule);
+        expect(result.valid).toBe(true);
+    });
+
+    it("Wrong Rule", () => {
+        const result = parser.validateRuleJSON(wrongExampleRule);
+        expect(result.valid).toBe(false);
+        expect(result.errors.length).toBeGreaterThan(0);
+    });
 });
