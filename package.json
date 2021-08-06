@@ -41,7 +41,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "author": "neferin12",
+  "author": "Julian Pollinger",
   "module": "dist/rita.esm.js",
   "size-limit": [
     {
@@ -71,5 +71,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/educorvi/rita.git"
+  },
+  "bugs": {
+    "url": "https://github.com/educorvi/rita/issues"
   }
 }
