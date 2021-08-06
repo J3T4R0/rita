@@ -46,11 +46,11 @@
   "size-limit": [
     {
       "path": "dist/rita.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "50 KB"
     },
     {
       "path": "dist/rita.esm.js",
-      "limit": "10 KB"
+      "limit": "50 KB"
     }
   ],
   "devDependencies": {
