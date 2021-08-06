@@ -1,6 +1,5 @@
 {
   "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/schema/schema.json",
-  "unnuetig": "lol",
   "rules": [
     {
       "id": "rule1",
