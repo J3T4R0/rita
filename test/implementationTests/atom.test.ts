@@ -1,9 +1,9 @@
-import {parseRule} from "../../src";
+import {Parser} from "../../src";
 // @ts-ignore
 import {exampleData, ruleTemplate} from "../assets/exampleData"
 
 it("isMember", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "atom",
@@ -13,7 +13,7 @@ it("isMember", () => {
     expect(rule.evaluate(exampleData)).toBe(true);
 });
 it("isNotEmployee", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "atom",
@@ -23,7 +23,7 @@ it("isNotEmployee", () => {
     expect(rule.evaluate(exampleData)).toBe(false);
 });
 it("nestedAtom", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "atom",
@@ -33,7 +33,7 @@ it("nestedAtom", () => {
     expect(rule.evaluate(exampleData)).toBe(true);
 });
 it("second customer rated", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "atom",

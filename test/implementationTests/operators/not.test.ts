@@ -1,10 +1,10 @@
-import {parseRule} from "../../../src";
+import {Parser} from "../../../src";
 // @ts-ignore
 import {exampleData, ruleTemplate} from "../../assets/exampleData";
 
 
 it("!member", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "not",
@@ -20,7 +20,7 @@ it("!member", () => {
     expect(rule.evaluate(exampleData)).toBe(false);
 });
 it("member  employee", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "not",

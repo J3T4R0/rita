@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/schema/rule.json",
+  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json",
   "type": "object",
   "properties": {
     "id": {
       "type": "string"
     },
     "rule": {
-      "$ref": "./term.json"
+      "$ref": "term.json"
     }
   },
   "required": ["id", "rule"]

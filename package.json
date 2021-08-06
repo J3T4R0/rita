@@ -9,7 +9,7 @@
   "files": [
     "dist",
     "src",
-    "schema"
+    "src/schema"
   ],
   "engines": {
     "node": ">=10"
@@ -21,7 +21,7 @@
     "prezip": "mkdirp dist_zip",
     "zip": "npm run zip:dist && npm run zip:schema",
     "zip:dist": "bestzip dist_zip/dist.zip dist/*",
-    "zip:schema": "bestzip dist_zip/schema.zip schema/*",
+    "zip:schema": "bestzip dist_zip/schema.zip src/schema/*",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "npm run build",

@@ -1,12 +1,14 @@
 import Ajv from 'ajv/dist/2019';
+import {Parser} from "../src";
+import exampleRule from "./assets/example1.json"
 
 const schemas = [
-    {name: 'Atom', schema: () => import('../schema/atom.json')},
-    {name: 'Operator', schema: () => import('../schema/operator.json')},
-    {name: 'Term', schema: () => import('../schema/term.json')},
-    {name: 'Rule', schema: () => import('../schema/rule.json')},
+    {name: 'Atom', schema: () => import('../src/schema/atom.json')},
+    {name: 'Operator', schema: () => import('../src/schema/operator.json')},
+    {name: 'Term', schema: () => import('../src/schema/term.json')},
+    {name: 'Rule', schema: () => import('../src/schema/rule.json')},
 
-    {name: 'Main', schema: () => import('../schema/schema.json')},
+    {name: 'Main', schema: () => import('../src/schema/schema.json')},
 ];
 
 describe('Validate Schema against Meta-Schema', () => {
@@ -18,4 +20,11 @@ describe('Validate Schema against Meta-Schema', () => {
             schema.schema().then(res => expect(ajv.validateSchema(res)).toBe(true));
         });
     }
+});
+
+const parser = new Parser();
+
+describe("Validate Rule example", () => {
+    const result = parser.validateRuleJSON(exampleRule);
+    console.log(result)
 });

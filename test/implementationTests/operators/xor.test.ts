@@ -1,10 +1,10 @@
-import {parseRule} from "../../../src";
+import {Parser} from "../../../src";
 // @ts-ignore
 import {exampleData, ruleTemplate} from "../../assets/exampleData";
 
 
 it("member", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "xor",
@@ -20,7 +20,7 @@ it("member", () => {
     expect(() => rule.evaluate(exampleData)).toThrow();
 });
 it("member xor employee", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "xor",
@@ -40,7 +40,7 @@ it("member xor employee", () => {
     expect(rule.evaluate(exampleData)).toBe(true);
 });
 it("customers[0].rated xor employee", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "xor",
@@ -60,7 +60,7 @@ it("customers[0].rated xor employee", () => {
     expect(rule.evaluate(exampleData)).toBe(false);
 });
 it("member xor visit.paymentDetails.payed", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "xor",
@@ -80,7 +80,7 @@ it("member xor visit.paymentDetails.payed", () => {
     expect(rule.evaluate(exampleData)).toBe(false);
 });
 it("member xor member xor visit.paymentDetails.payed", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "xor",

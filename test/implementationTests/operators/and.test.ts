@@ -1,9 +1,9 @@
-import {parseRule} from "../../../src";
+import {Parser} from "../../../src";
 // @ts-ignore
 import {exampleData, ruleTemplate} from "../../assets/exampleData";
 
 it("member", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "and",
@@ -19,7 +19,7 @@ it("member", () => {
     expect(() => rule.evaluate(exampleData)).toThrow();
 });
 it("member && employee", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "and",
@@ -39,7 +39,7 @@ it("member && employee", () => {
     expect(rule.evaluate(exampleData)).toBe(false);
 });
 it("customers[0].rated && employee", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "and",
@@ -59,7 +59,7 @@ it("customers[0].rated && employee", () => {
     expect(rule.evaluate(exampleData)).toBe(false);
 });
 it("member && visit.paymentDetails.payed", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "and",
@@ -79,7 +79,7 @@ it("member && visit.paymentDetails.payed", () => {
     expect(rule.evaluate(exampleData)).toBe(true);
 });
 it("member && member && visit.paymentDetails.payed", () => {
-    const rule = parseRule({
+    const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "and",
