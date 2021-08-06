@@ -3,29 +3,35 @@ import Ajv from 'ajv/dist/2019';
 import schemas from "./schema"
 import {AnyValidateFunction} from "ajv/dist/types";
 
+/**
+ * Results for validateRuleJSON
+ */
 interface validationResult {
     valid: boolean,
     errors: any
 }
 
+/**
+ * Class for all actions related to parsing
+ * Constructed as Singleton
+ */
 export default class Parser {
     private readonly validate: AnyValidateFunction<unknown> | undefined;
-    private readonly parser: Parser | null = null;
+    private static parser: Parser | null = null;
 
-    constructor(validate?: AnyValidateFunction<unknown> | undefined) {
-        if (validate) {
-            this.validate = validate;
-        } else {
-            if (this.parser) {
-                return this.parser;
-            } else {
-                this.validate = new Ajv({schemas: schemas}).getSchema("https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json");
-                if (!this.validate) {
-                    throw new Error("Error compiling schema");
-                }
-            }
+    private constructor(validate: AnyValidateFunction<unknown> | undefined) {
+        this.validate = validate;
+    }
+
+    /**
+     * Call this Method to receive a parser
+     */
+    public static getParser(): Parser {
+        if (!Parser.parser) {
+            const validate = new Ajv({schemas: schemas}).getSchema("https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json");
+            Parser.parser = new Parser(validate)
         }
-        this.parser = this
+        return Parser.parser;
     }
 
     public validateRuleJSON(json: Record<string, any>): validationResult {

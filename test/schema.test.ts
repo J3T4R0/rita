@@ -23,7 +23,7 @@ describe('Validate Schema against Meta-Schema', () => {
     }
 });
 
-const parser = new Parser();
+const parser = Parser.getParser();
 
 describe("Validate Rule example", () => {
     it("Correct Rule", () => {
