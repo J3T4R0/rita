@@ -27,7 +27,8 @@
     "prepare": "npm run build",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "doc": "npx typedoc src/index.ts"
   },
   "peerDependencies": {},
   "husky": {

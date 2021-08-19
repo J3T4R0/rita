@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main, next ]
   pull_request:
-     branches: [ main ]
+    branches: [ main ]
 jobs:
   build:
     name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
@@ -11,8 +11,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['12.x', '14.x', '16.x']
-        os: [ubuntu-latest]
+        node: [ '12.x', '14.x', '16.x' ]
+        os: [ ubuntu-latest ]
 
     steps:
       - name: Checkout repo
@@ -31,6 +31,24 @@ jobs:
 
       - name: Build
         run: yarn build
+  documentation:
+    if: github.event_name == 'push'
+    needs: build
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+      - name: Build Documentation
+        run: yarn run doc
   release:
     if: github.event_name == 'push'
     needs: build
@@ -45,8 +63,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
