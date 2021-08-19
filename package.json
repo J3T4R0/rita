@@ -22,12 +22,13 @@
     "zip": "npm run zip:dist && npm run zip:schema",
     "zip:dist": "bestzip dist_zip/dist.zip dist/*",
     "zip:schema": "bestzip dist_zip/schema.zip src/schema/*",
-    "test": "tsdx test",
+    "test": "jest",
     "lint": "tsdx lint",
     "prepare": "npm run build",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "doc": "npx typedoc src/index.ts"
   },
   "peerDependencies": {},
   "husky": {
@@ -54,16 +55,21 @@
     }
   ],
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
     "@size-limit/preset-small-lib": "^5.0.1",
     "@types/deep-equal": "^1.0.1",
+    "@types/jest": "^26.0.24",
     "@types/madge": "^5.0.0",
     "bestzip": "^2.2.0",
     "husky": "^7.0.1",
+    "jest": "^27.0.6",
     "madge": "^5.0.1",
     "mkdirp": "^1.0.4",
     "semantic-release": "^17.4.4",
     "size-limit": "^5.0.1",
+    "ts-jest": "^27.0.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.0",
     "typescript": "^4.3.5"

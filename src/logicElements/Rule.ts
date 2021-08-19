@@ -1,9 +1,17 @@
 import {Term} from "./Term";
 
+/**
+ * A Rule that can be evaluated
+ */
 export class Rule {
+    /**
+     * The id of the rule
+     */
     public readonly id: string;
+    /**
+     * The root of the rule
+     */
     public rule: Term;
-
 
     constructor(id: string, rule: Term) {
         this.id = id;
