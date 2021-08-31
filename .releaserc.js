@@ -17,7 +17,7 @@ module.exports = {
             "assets": ["dist_zip/dist.zip", "dist_zip/schema.zip"]
         }],
         ["@semantic-release/git", {
-            "assets": ["package.json"],
+            "assets": ["package.json", "docs/*", "docs/**/*"],
             "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }],
     ],
