@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "math"
+      ]
+    },
+    "operation": {
+      "description": "Selects how the numbers or dates should be compared",
+      "type": "string",
+      "enum": [
+        "greater",
+        "smaller",
+        "greaterOrEqual",
+        "smallerOrEqual",
+        "equal"
+      ]
+    },
+    "parameters": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "atom.json"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "title": "Calculation",
+            "description": "Calculates a result",
+            "type": "object",
+            "properties": {
+              "operation": {
+                "description": "The mathematical operation to be calculated",
+                "type": "string",
+                "enum": ["add", "subtract", "multiply", "divide", "modulo"]
+              },
+              "parameters": {
+                "$ref": "#/properties/parameters"
+              },
+              "dateUnit": {
+                "description": "Which unit is to use when working with days. For example, if two days are subtracted, should the result be in days, or months? Also usable, when adding days/months/years to a date",
+                "type": "string",
+                "enum": ["milliseconds", "seconds", "minutes", "hours", "days", "months", "years"],
+                "default": "milliseconds"
+              }
+            },
+            "required": [
+              "operation",
+              "parameters"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "type",
+    "operation",
+    "parameters"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "comment": "This evaluates to \"5>2\"",
+      "type": "math",
+      "operation":"greater",
+      "parameters": [5,2]
+    }
+  ]
+}
