@@ -1,4 +1,5 @@
 import Ajv from 'ajv/dist/2019';
+import addFormats from "ajv-formats"
 import {Parser} from "../src";
 import exampleRule from "./assets/example1.json"
 import wrongExampleRule from "./assets/example_wrong.json"
@@ -14,6 +15,7 @@ const schemas = [
 
 describe('Validate Schema against Meta-Schema', () => {
     const ajv = new Ajv();
+    addFormats(ajv);
 
     for (const schema of schemas) {
         it(schema.name, () => {

@@ -3,6 +3,7 @@ import Ajv from 'ajv/dist/2019';
 import schemas from "./schema"
 import {schema} from "./schema"
 import {AnyValidateFunction} from "ajv/dist/types";
+import addFormats from "ajv-formats";
 
 /**
  * Results for validateRuleJSON
@@ -43,7 +44,9 @@ export default class Parser {
      */
     public static getParser(): Parser {
         if (!Parser.parser) {
-            const validate = new Ajv({schemas: schemas}).getSchema("https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json");
+            const ajv = new Ajv({schemas: schemas});
+            addFormats(ajv);
+            const validate = ajv.getSchema("https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json");
             Parser.parser = new Parser(validate)
         }
         return Parser.parser;
