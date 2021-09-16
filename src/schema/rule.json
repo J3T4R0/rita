@@ -6,6 +6,10 @@
     "id": {
       "type": "string"
     },
+    "comment": {
+      "type": "string",
+      "description": "A comment about what the rule does"
+    },
     "rule": {
       "$ref": "term.json"
     }
