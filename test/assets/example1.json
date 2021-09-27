@@ -21,6 +21,13 @@
           }
         ]
       }
+    },
+    {
+      "id": "rule2",
+      "rule": {
+        "type": "atom",
+        "path": "employee"
+      }
     }
   ]
 }
