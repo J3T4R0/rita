@@ -28,8 +28,9 @@
     "size": "size-limit",
     "analyze": "size-limit --why",
     "semantic-release": "semantic-release",
-    "doc": "npm run doc:implementation",
-    "doc:implementation": "npx typedoc --out docs/implementation src/index.ts"
+    "doc": "npm run doc:implementation && npm run doc:schema",
+    "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
+    "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -n -x -"
   },
   "peerDependencies": {},
   "husky": {
@@ -56,6 +57,7 @@
     }
   ],
   "devDependencies": {
+    "@adobe/jsonschema2md": "^6.1.4",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
@@ -73,6 +75,7 @@
     "ts-jest": "^27.0.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.0",
+    "typedoc": "^0.22.4",
     "typescript": "^4.3.5"
   },
   "dependencies": {
