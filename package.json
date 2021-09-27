@@ -28,7 +28,8 @@
     "size": "size-limit",
     "analyze": "size-limit --why",
     "semantic-release": "semantic-release",
-    "doc": "npx typedoc src/index.ts"
+    "doc": "npm run doc:implementation",
+    "doc:implementation": "npx typedoc --out docs/implementation src/index.ts"
   },
   "peerDependencies": {},
   "husky": {
