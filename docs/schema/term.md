@@ -1,4 +1,4 @@
-# Untitled schema Schema
+# Term Schema
 
 ```txt
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/term.json
@@ -10,16 +10,16 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/term.json
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [term.json](../../src/schema/term.json "open original schema") |
 
-## Untitled schema Type
+## Term Type
 
-merged type ([Details](term.md))
+merged type ([Term](term.md))
 
 one (and only one) of
 
 *   one (and only one) of
 
-    *   [Untitled object in undefined](operator-oneof-0.md "check type definition")
+    *   [Binary operator](operator-oneof-binary-operator.md "check type definition")
 
-    *   [Untitled object in undefined](operator-oneof-1.md "check type definition")
+    *   [Unary operator](operator-oneof-unary-operator.md "check type definition")
 
-*   [Untitled object in undefined](atom.md "check type definition")
+*   [Atom](atom.md "check type definition")

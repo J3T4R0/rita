@@ -1,4 +1,4 @@
-# Untitled array in undefined Schema
+# Untitled array in Main Schema
 
 ```txt
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json#/properties/rules
@@ -12,4 +12,4 @@ Array of all rules in this ruleset.
 
 ## rules Type
 
-`object[]` ([Details](rule.md))
+`object[]` ([Rule](rule.md))

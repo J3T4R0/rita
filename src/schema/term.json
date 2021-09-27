@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/term.json",
+  "title": "Term",
   "oneOf": [
     {
       "$ref": "operator.json"

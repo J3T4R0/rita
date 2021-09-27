@@ -1,4 +1,4 @@
-# Untitled object in undefined Schema
+# Rule Schema
 
 ```txt
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json
@@ -10,16 +10,16 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [rule.json](../../src/schema/rule.json "open original schema") |
 
-## Untitled object in undefined Type
+## Rule Type
 
-`object` ([Details](rule.md))
+`object` ([Rule](rule.md))
 
-# Untitled object in undefined Properties
+# Rule Properties
 
-| Property      | Type     | Required | Nullable       | Defined by                                                                                                                              |
-| :------------ | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)     | `string` | Required | cannot be null | [Untitled schema](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/id")     |
-| [rule](#rule) | Merged   | Required | cannot be null | [Untitled schema](rule-properties-rule.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/term.json#/properties/rule") |
+| Property      | Type     | Required | Nullable       | Defined by                                                                                                               |
+| :------------ | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)     | `string` | Required | cannot be null | [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/id") |
+| [rule](#rule) | Merged   | Required | cannot be null | [Rule](term.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/term.json#/properties/rule")             |
 
 ## id
 
@@ -33,7 +33,7 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json
 
 *   cannot be null
 
-*   defined in: [Untitled schema](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/id")
+*   defined in: [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/id")
 
 ### id Type
 
@@ -47,22 +47,22 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json
 
 *   is required
 
-*   Type: merged type ([Details](rule-properties-rule.md))
+*   Type: merged type ([Term](term.md))
 
 *   cannot be null
 
-*   defined in: [Untitled schema](rule-properties-rule.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/term.json#/properties/rule")
+*   defined in: [Rule](term.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/term.json#/properties/rule")
 
 ### rule Type
 
-merged type ([Details](rule-properties-rule.md))
+merged type ([Term](term.md))
 
 one (and only one) of
 
 *   one (and only one) of
 
-    *   [Untitled object in undefined](operator-oneof-0.md "check type definition")
+    *   [Binary operator](operator-oneof-binary-operator.md "check type definition")
 
-    *   [Untitled object in undefined](operator-oneof-1.md "check type definition")
+    *   [Unary operator](operator-oneof-unary-operator.md "check type definition")
 
-*   [Untitled object in undefined](atom.md "check type definition")
+*   [Atom](atom.md "check type definition")

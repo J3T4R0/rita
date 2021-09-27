@@ -1,4 +1,4 @@
-# Untitled schema Schema
+# Operator Schema
 
 ```txt
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json
@@ -10,12 +10,12 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [operator.json](../../src/schema/operator.json "open original schema") |
 
-## Untitled schema Type
+## Operator Type
 
-merged type ([Details](operator.md))
+merged type ([Operator](operator.md))
 
 one (and only one) of
 
-*   [Untitled object in undefined](operator-oneof-0.md "check type definition")
+*   [Binary operator](operator-oneof-binary-operator.md "check type definition")
 
-*   [Untitled object in undefined](operator-oneof-1.md "check type definition")
+*   [Unary operator](operator-oneof-unary-operator.md "check type definition")

@@ -1,7 +1,7 @@
-# Untitled string in undefined Schema
+# Term Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/type
+https://raw.githubusercontent.com/educorvi/rita/main/src/schema/term.json#/oneOf/0/properties/parameters/items
 ```
 
 
@@ -10,14 +10,16 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/o
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [operator.json*](../../src/schema/operator.json "open original schema") |
 
-## type Type
+## items Type
 
-`string`
+merged type ([Term](operator-oneof-binary-operator-properties-parameters-term.md))
 
-## type Constraints
+one (and only one) of
 
-**enum**: the value of this property must be equal to one of the following values:
+*   one (and only one) of
 
-| Value   | Explanation |
-| :------ | :---------- |
-| `"not"` |             |
+    *   [Binary operator](operator-oneof-binary-operator.md "check type definition")
+
+    *   [Unary operator](operator-oneof-unary-operator.md "check type definition")
+
+*   [Atom](atom.md "check type definition")

@@ -1,4 +1,4 @@
-# Untitled array in undefined Schema
+# Untitled array in Operator Schema
 
 ```txt
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/parameters
@@ -12,7 +12,7 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/o
 
 ## parameters Type
 
-an array of merged types ([Details](operator-oneof-1-properties-parameters-items.md))
+an array of merged types ([Term](term.md))
 
 ## parameters Constraints
 

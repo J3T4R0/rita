@@ -1,4 +1,4 @@
-# Untitled string in undefined Schema
+# Untitled string in Atom Schema
 
 ```txt
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/atom.json#/properties/type

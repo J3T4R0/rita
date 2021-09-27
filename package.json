@@ -19,7 +19,7 @@
     "build": "tsdx build",
     "postbuild": "npm run zip",
     "prezip": "mkdirp dist_zip",
-    "zip": "npm run zip:dist && npm run zip:schema",
+    "zip": "npm-run-all --parallel -l zip:*",
     "zip:dist": "bestzip dist_zip/dist.zip dist/*",
     "zip:schema": "bestzip dist_zip/schema.zip src/schema/*",
     "test": "jest",
@@ -28,9 +28,10 @@
     "size": "size-limit",
     "analyze": "size-limit --why",
     "semantic-release": "semantic-release",
-    "doc": "npm run doc:implementation && npm run doc:schema",
+    "doc": "npm-run-all --parallel -l doc:*",
+    "postdoc": "git add docs",
     "doc:implementation": "npx typedoc --out docs/implementation src/index.ts",
-    "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -n -x -"
+    "doc:schema": "jsonschema2md -d src/schema -o docs/schema -e json -x -"
   },
   "peerDependencies": {},
   "husky": {
@@ -70,6 +71,7 @@
     "jest": "^27.0.6",
     "madge": "^5.0.1",
     "mkdirp": "^1.0.4",
+    "npm-run-all": "^4.1.5",
     "semantic-release": "^17.4.4",
     "size-limit": "^5.0.1",
     "ts-jest": "^27.0.4",

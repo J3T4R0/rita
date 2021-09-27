@@ -1,7 +1,7 @@
-# Untitled string in undefined Schema
+# Untitled array in Operator Schema
 
 ```txt
-https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type
+https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters
 ```
 
 
@@ -10,16 +10,10 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/o
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [operator.json*](../../src/schema/operator.json "open original schema") |
 
-## type Type
+## parameters Type
 
-`string`
+an array of merged types ([Term](term.md))
 
-## type Constraints
+## parameters Constraints
 
-**enum**: the value of this property must be equal to one of the following values:
-
-| Value   | Explanation |
-| :------ | :---------- |
-| `"and"` |             |
-| `"or"`  |             |
-| `"xor"` |             |
+**minimum number of items**: the minimum number of items for this array is: `2`
