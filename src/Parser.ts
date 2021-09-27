@@ -1,4 +1,4 @@
-import {Term, Operator, Atom, Rule, And, Not, Or, Xor} from "./elements"
+import {Term, Operator, Atom, Rule, And, Not, Or, Xor} from "./logicElements"
 import Ajv from 'ajv/dist/2019';
 import schemas from "./schema"
 import {schema} from "./schema"

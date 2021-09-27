@@ -1,5 +1,5 @@
 import "./ArrayExtension"
-export * from "./elements"
+export * from "./logicElements"
 import Parser from "./Parser"
 export {Parser}
 export * from "./Logger"
