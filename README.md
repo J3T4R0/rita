@@ -21,3 +21,5 @@ const ruleSet: Array<Rule> = Parser.parseRuleSet(exampleRule);
 /** Check wether data fulfilles the first rule in the ruleSet */
 const result: boolean = ruleSet[0].evaluate(exampleData);
 ```
+## Documentation
+The documentation of the schema and the implementation can be found here: [https://educorvi.github.io/rita](https://educorvi.github.io/rita)
