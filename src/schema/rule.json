@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json",
+  "title": "Rule",
   "type": "object",
   "properties": {
     "id": {
@@ -10,5 +11,28 @@
       "$ref": "term.json"
     }
   },
-  "required": ["id", "rule"]
+  "required": ["id", "rule"],
+  "examples": [
+    {
+      "id": "rule1",
+      "rule": {
+        "type": "and",
+        "parameters": [
+          {
+            "type": "atom",
+            "path": "member"
+          },
+          {
+            "type": "not",
+            "parameters": [
+              {
+                "type": "atom",
+                "path": "employee"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }

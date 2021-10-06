@@ -1,143 +1,50 @@
-<!doctype html>
-<html class="default no-js">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@educorvi/rita</title>
-	<meta name="description" content="Documentation for @educorvi/rita">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rita Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">@educorvi/rita</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>@educorvi/rita</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<p><a href="https://github.com/educorvi/rita/actions/workflows/main.yml"><img src="https://github.com/educorvi/rita/actions/workflows/main.yml/badge.svg" alt="CI"></a>
-				<a href="http://www.typescriptlang.org/"><img src="https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg" alt="TypeScript"></a></p>
-				<a href="#rule-it-all-rita" id="rule-it-all-rita" style="color: inherit; text-decoration: none;">
-					<h1>Rule It All <em>(Rita)</em></h1>
-				</a>
-				<p>JSON Schema for rule-based evaluation and an Typescript Implementation to evaluate it</p>
-				<a href="#schema" id="schema" style="color: inherit; text-decoration: none;">
-					<h2>Schema</h2>
-				</a>
-				<p>The Schema is available in the schema-folder and has the id <code>https://raw.githubusercontent.com/educorvi/rita/main/schema/schema.json</code></p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="classes/And.html" class="tsd-kind-icon">And</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/Atom.html" class="tsd-kind-icon">Atom</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/Not.html" class="tsd-kind-icon">Not</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/Operator.html" class="tsd-kind-icon">Operator</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/Or.html" class="tsd-kind-icon">Or</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/Parser.html" class="tsd-kind-icon">Parser</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/Rule.html" class="tsd-kind-icon">Rule</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/Term.html" class="tsd-kind-icon">Term</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/Xor.html" class="tsd-kind-icon">Xor</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
+    <div class="w-100 text-center p-2">
+        <h1>Rita Schema Documentation</h1>
+        <div class="w-100 mt-5" style="display: flex; justify-content: center;">
+            <div class="card ccard m-2 shadow-sm">
+                <div class="card-body">
+                    <h2>Schema</h2>
+                </div>
+                <a href="./schema" class="btn btn-primary stretched-link">View</a>
+            </div>
+            <div class="card ccard m-2 shadow-sm">
+                <div class="card-body">
+                    <h2>Implementation</h2>
+                </div>
+                <a href="./implementation" class="btn btn-primary stretched-link">View</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+            crossorigin="anonymous"></script>
 </body>
+
+<style>
+    .ccard {
+        width: 18rem;
+        transition: all 0.3s;
+        z-index: 100;
+    }
+    .ccard:hover {
+        box-shadow: 0 1rem 2rem 1px rgba(0,0,0, .175) !important;
+        transform: scale(1.05);
+        z-index: 1000;
+    }
+    a.btn{
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+    }
+</style>
 </html>
