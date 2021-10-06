@@ -11,5 +11,28 @@
       "$ref": "term.json"
     }
   },
-  "required": ["id", "rule"]
+  "required": ["id", "rule"],
+  "examples": [
+    {
+      "id": "rule1",
+      "rule": {
+        "type": "and",
+        "parameters": [
+          {
+            "type": "atom",
+            "path": "member"
+          },
+          {
+            "type": "not",
+            "parameters": [
+              {
+                "type": "atom",
+                "path": "employee"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }

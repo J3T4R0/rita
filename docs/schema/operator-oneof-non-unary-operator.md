@@ -16,10 +16,10 @@ Requires at least two parameters
 
 # 0 Properties
 
-| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                            |
-| :------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [type](#type)             | `string` | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type")             |
-| [parameters](#parameters) | `array`  | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-parameters.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters") |
+| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                     |
+| :------------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)             | `string` | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/type")                      |
+| [parameters](#parameters) | `array`  | Required | cannot be null | [Operator](operator-oneof-non-unary-operator-properties-multiple-parameters.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters") |
 
 ## type
 
@@ -61,7 +61,7 @@ Requires at least two parameters
 
 *   cannot be null
 
-*   defined in: [Operator](operator-oneof-non-unary-operator-properties-parameters.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters")
+*   defined in: [Operator](operator-oneof-non-unary-operator-properties-multiple-parameters.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters")
 
 ### parameters Type
 

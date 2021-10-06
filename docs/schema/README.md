@@ -22,11 +22,11 @@
 
 ### Arrays
 
-*   [Parameters](./operator-oneof-non-unary-operator-properties-parameters.md) – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters`
+*   [Multiple Parameters](./operator-oneof-non-unary-operator-properties-multiple-parameters.md) – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters`
 
 *   [Ruleset](./schema-properties-ruleset.md "Array of all rules in this ruleset") – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json#/properties/rules`
 
-*   [Untitled array in Operator](./operator-oneof-unary-operator-properties-parameters.md) – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/parameters`
+*   [Unary Parameters](./operator-oneof-unary-operator-properties-unary-parameters.md) – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/parameters`
 
 ## Version Note
 

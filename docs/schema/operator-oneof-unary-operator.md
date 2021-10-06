@@ -16,10 +16,10 @@ Requires exactly on parameter
 
 # 1 Properties
 
-| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                        |
-| :------------------------ | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)             | `string` | Required | cannot be null | [Operator](operator-oneof-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/type")             |
-| [parameters](#parameters) | `array`  | Required | cannot be null | [Operator](operator-oneof-unary-operator-properties-parameters.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/parameters") |
+| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                              |
+| :------------------------ | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [type](#type)             | `string` | Required | cannot be null | [Operator](operator-oneof-unary-operator-properties-type.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/type")                   |
+| [parameters](#parameters) | `array`  | Required | cannot be null | [Operator](operator-oneof-unary-operator-properties-unary-parameters.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/parameters") |
 
 ## type
 
@@ -59,7 +59,7 @@ Requires exactly on parameter
 
 *   cannot be null
 
-*   defined in: [Operator](operator-oneof-unary-operator-properties-parameters.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/parameters")
+*   defined in: [Operator](operator-oneof-unary-operator-properties-unary-parameters.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/parameters")
 
 ### parameters Type
 

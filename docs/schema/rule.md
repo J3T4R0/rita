@@ -14,6 +14,32 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json
 
 `object` ([Rule](rule.md))
 
+## Rule Examples
+
+```json
+{
+  "id": "rule1",
+  "rule": {
+    "type": "and",
+    "parameters": [
+      {
+        "type": "atom",
+        "path": "member"
+      },
+      {
+        "type": "not",
+        "parameters": [
+          {
+            "type": "atom",
+            "path": "employee"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 # Rule Properties
 
 | Property      | Type     | Required | Nullable       | Defined by                                                                                                               |

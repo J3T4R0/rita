@@ -1,4 +1,4 @@
-# Parameters Schema
+# Unary Parameters Schema
 
 ```txt
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/parameters
