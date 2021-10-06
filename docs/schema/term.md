@@ -18,7 +18,7 @@ one (and only one) of
 
 *   one (and only one) of
 
-    *   [Binary operator](operator-oneof-binary-operator.md "check type definition")
+    *   [Non-Unary operator](operator-oneof-non-unary-operator.md "check type definition")
 
     *   [Unary operator](operator-oneof-unary-operator.md "check type definition")
 

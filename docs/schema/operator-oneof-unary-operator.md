@@ -4,7 +4,7 @@
 https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1
 ```
 
-
+Requires exactly on parameter
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                              |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------- |

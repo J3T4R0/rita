@@ -16,15 +16,15 @@
 
 ### Objects
 
-*   [Binary operator](./operator-oneof-binary-operator.md) – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0`
+*   [Non-Unary operator](./operator-oneof-non-unary-operator.md "Requires at least two parameters") – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0`
 
-*   [Unary operator](./operator-oneof-unary-operator.md) – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1`
+*   [Unary operator](./operator-oneof-unary-operator.md "Requires exactly on parameter") – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1`
 
 ### Arrays
 
-*   [Untitled array in Main](./schema-properties-rules.md "Array of all rules in this ruleset") – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json#/properties/rules`
+*   [Parameters](./operator-oneof-non-unary-operator-properties-parameters.md) – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters`
 
-*   [Untitled array in Operator](./operator-oneof-binary-operator-properties-parameters.md) – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/0/properties/parameters`
+*   [Ruleset](./schema-properties-ruleset.md "Array of all rules in this ruleset") – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json#/properties/rules`
 
 *   [Untitled array in Operator](./operator-oneof-unary-operator-properties-parameters.md) – `https://raw.githubusercontent.com/educorvi/rita/main/src/schema/operator.json#/oneOf/1/properties/parameters`
 

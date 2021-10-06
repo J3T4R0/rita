@@ -7,6 +7,7 @@
   "properties": {
     "rules": {
       "type": "array",
+      "title": "Ruleset",
       "description": "Array of all rules in this ruleset.",
       "items": {
         "$ref": "rule.json"

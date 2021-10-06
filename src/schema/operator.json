@@ -4,7 +4,8 @@
   "title": "Operator",
   "oneOf": [
     {
-      "title": "Binary operator",
+      "title": "Non-Unary operator",
+      "description": "Requires at least two parameters",
       "type": "object",
       "properties": {
         "type": {
@@ -17,6 +18,7 @@
         },
         "parameters": {
           "type": "array",
+          "title": "Parameters",
           "minItems": 2,
           "items": {
             "$ref": "term.json"
@@ -31,6 +33,7 @@
     },
     {
       "title": "Unary operator",
+      "description": "Requires exactly on parameter",
       "type": "object",
       "properties": {
         "type": {
