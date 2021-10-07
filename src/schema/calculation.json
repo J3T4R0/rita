@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/calculation.json",
+  "title": "Calculation",
+  "description": "Calculates a result",
+  "type": "object",
+  "properties": {
+    "operation": {
+      "description": "The mathematical operation to be calculated",
+      "type": "string",
+      "enum": [
+        "add",
+        "subtract",
+        "multiply",
+        "divide",
+        "modulo"
+      ]
+    },
+    "parameters": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "atom.json"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "$ref": "calculation.json"
+          }
+        ]
+      }
+    },
+    "dateUnit": {
+      "description": "Which unit is to use when working with dates. For example, if two days are subtracted, should the result be in days, or months? Also usable, when adding days/months/years to a date",
+      "type": "string",
+      "enum": [
+        "milliseconds",
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "months",
+        "years"
+      ],
+      "default": "milliseconds"
+    }
+  },
+  "required": [
+    "operation",
+    "parameters"
+  ],
+  "additionalProperties": false
+}

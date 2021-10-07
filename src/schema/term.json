@@ -9,7 +9,7 @@
       "$ref": "atom.json"
     },
     {
-      "$ref": "math.json"
+      "$ref": "calculation.json"
     }
   ]
 }
