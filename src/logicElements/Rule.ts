@@ -1,4 +1,4 @@
-import {assertBoolean, Term} from "./Term";
+import {Term} from "./Term";
 
 /**
  * A Rule that can be evaluated
@@ -19,9 +19,7 @@ export class Rule {
     }
 
     public evaluate(data: Record<string, any>): boolean {
-        const ret = this.rule.evaluate(data);
-        assertBoolean(ret);
-        return ret;
+        return <boolean>this.rule.evaluate(data);
     }
 
     public toJsonReady(): Record<string, any> {

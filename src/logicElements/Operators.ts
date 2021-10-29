@@ -1,4 +1,4 @@
-import {assertBoolean, Term} from "./Term"
+import {Term} from "./Term"
 
 /**
  * Parent class for all operators
@@ -24,9 +24,7 @@ export abstract class Operator extends Term {
 
     evaluateReduce(data: Record<string, any>, func:(x1: boolean, x2: boolean)=>boolean, defaultValue = false) {
         return this.parameters.reduce((acc: boolean, curr: Term):boolean => {
-            const r = curr.evaluate(data);
-            assertBoolean(r);
-            return func(acc, r);
+            return func(acc, <boolean>curr.evaluate(data));
         }, defaultValue);
     }
 
