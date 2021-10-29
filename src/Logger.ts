@@ -2,11 +2,11 @@ export default interface Logger {
     log(data: any): void;
     warn(data: any): void;
     error(data: any): void;
-    critical(data: any): void;
+    fatal(data: any): void;
 }
 
 export class DefaultConsoleLogger implements Logger {
-    critical(data: any): void {
+    fatal(data: any): void {
         this.error(data)
     }
 
