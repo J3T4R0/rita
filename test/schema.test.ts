@@ -2,11 +2,14 @@ import Ajv from 'ajv/dist/2019';
 import addFormats from "ajv-formats"
 import {Parser} from "../src";
 import exampleRule from "./assets/example1.json"
+import exampleMath from "./assets/exampleMath.json"
 import wrongExampleRule from "./assets/example_wrong.json"
 
 const schemas = [
     {name: 'Atom', schema: () => import('../src/schema/atom.json')},
     {name: 'Operator', schema: () => import('../src/schema/operator.json')},
+    {name: 'Comparison', schema: () => import('../src/schema/comparison.json')},
+    {name: 'Calculation', schema: () => import('../src/schema/calculation.json')},
     {name: 'Term', schema: () => import('../src/schema/term.json')},
     {name: 'Rule', schema: () => import('../src/schema/rule.json')},
 
@@ -30,6 +33,11 @@ const parser = Parser.getParser();
 describe("Validate Rule example", () => {
     it("Correct Rule", () => {
         const result = parser.validateRuleSetJSON(exampleRule);
+        expect(result.valid).toBe(true);
+    });
+
+    it("Correct comparison and calculation", () => {
+        const result = parser.validateRuleSetJSON(exampleMath);
         expect(result.valid).toBe(true);
     });
 

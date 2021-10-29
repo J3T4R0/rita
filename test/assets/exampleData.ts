@@ -16,7 +16,8 @@ export const exampleData = {
             rated: true
         }
     ],
-    dateOfBirth: "2000-01-01"
+    dateOfBirth: "2000-01-01",
+    name: "Julian"
 }
 
 export const ruleTemplate = {

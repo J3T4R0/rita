@@ -16,7 +16,7 @@
     "typeOfValue": {
       "description": "The type of the value",
       "type": "string",
-      "enum": ["boolean", "number", "Date"],
+      "enum": ["boolean", "number", "Date", "String"],
       "default": "boolean"
     }
   },

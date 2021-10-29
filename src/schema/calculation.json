@@ -5,6 +5,12 @@
   "description": "Calculates a result",
   "type": "object",
   "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "calculation"
+      ]
+    },
     "operation": {
       "description": "The mathematical operation to be calculated",
       "type": "string",
@@ -55,7 +61,8 @@
   },
   "required": [
     "operation",
-    "parameters"
+    "parameters",
+    "type"
   ],
   "additionalProperties": false
 }

@@ -8,11 +8,11 @@
         "type": "or",
         "parameters": [
           {
-            "type": "math",
+            "type": "comparison",
             "operation": "greaterOrEqual",
             "parameters": [
               {
-                "type": "math",
+                "type": "calculation",
                 "operation": "subtract",
                 "dateUnit": "years",
                 "parameters": [
@@ -28,12 +28,12 @@
             ]
           },
           {
-            "type": "math",
+            "type": "comparison",
             "operation": "greater",
             "parameters": [
               20,
               {
-                "type": "math",
+                "type": "calculation",
                 "operation": "add",
                 "parameters": [
                   {
@@ -49,6 +49,21 @@
                 ]
               }
             ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "string-comparison",
+      "rule": {
+        "type": "comparison",
+        "operation": "equal",
+        "parameters": [
+          "Julian",
+          {
+            "type": "atom",
+            "path": "name",
+            "typeOfValue": "String"
           }
         ]
       }
