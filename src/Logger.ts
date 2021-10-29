@@ -1,5 +1,6 @@
 export default interface Logger {
     log(data: any): void;
+    debug(data: any): void;
     warn(data: any): void;
     error(data: any): void;
     fatal(data: any): void;
@@ -20,6 +21,10 @@ export class DefaultConsoleLogger implements Logger {
 
     warn(data: any): void {
         console.warn(data);
+    }
+
+    debug(data: any):void{
+	console.log(data);
     }
 
 }
