@@ -25,7 +25,6 @@
     "parameters": {
       "type": "array",
       "minItems": 2,
-      "maxItems": 2,
       "items": {
         "oneOf": [
           {
@@ -44,11 +43,10 @@
         ]
       }
     },
-    "dateUnit": {
+    "dateResultUnit": {
       "description": "Which unit is to use when working with dates. For example, if two days are subtracted, should the result be in days, or months? Also usable, when adding days/months/years to a date",
       "type": "string",
       "enum": [
-        "milliseconds",
         "seconds",
         "minutes",
         "hours",
@@ -56,7 +54,20 @@
         "months",
         "years"
       ],
-      "default": "milliseconds"
+      "default": "seconds"
+    },
+    "dateCalculationUnit": {
+      "description": "Which unit is to use when adding/subtracting with dates.",
+      "type": "string",
+      "enum": [
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "months",
+        "years"
+      ],
+      "default": "seconds"
     }
   },
   "required": [

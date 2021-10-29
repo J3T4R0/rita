@@ -3,7 +3,7 @@ export abstract class Term {
      * Evaluates the term with the given data
      * @param data The data that's used for evaluation
      */
-    abstract evaluate(data: Record<string, any>): boolean;
+    abstract evaluate(data: Record<string, any>): boolean | Date | number | String;
 
     /**
      * Check if the term is valid

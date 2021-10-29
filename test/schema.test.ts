@@ -30,26 +30,31 @@ describe('Validate Schema against Meta-Schema', () => {
 
 const parser = Parser.getParser();
 
+function validateSchema(schema: Record<string, any>, expected = true) {
+    const result = parser.validateRuleSetJSON(schema);
+    if (result.valid !== expected) {
+        console.warn(result.errors);
+    }
+    expect(result.valid).toBe(expected);
+}
+
 describe("Validate Rule example", () => {
     it("Correct Rule", () => {
-        const result = parser.validateRuleSetJSON(exampleRule);
-        expect(result.valid).toBe(true);
+        validateSchema(exampleRule);
     });
 
     it("Correct comparison and calculation", () => {
-        const result = parser.validateRuleSetJSON(exampleMath);
-        expect(result.valid).toBe(true);
+        validateSchema(exampleMath);
     });
-
     it("Wrong Rule", () => {
         const result = parser.validateRuleSetJSON(wrongExampleRule);
         expect(result.valid).toBe(false);
         expect(result.errors).not.toHaveLength(0)
     });
-});
 
-it("convert to Json", () => {
-    const ruleset = Parser.parseRuleSet(exampleRule);
-    const json = Parser.toJson(ruleset);
-    expect(JSON.parse(json)).toEqual(exampleRule);
+    it("convert to Json", () => {
+        const ruleset = Parser.parseRuleSet(exampleRule);
+        const json = Parser.toJson(ruleset);
+        expect(JSON.parse(json)).toEqual(exampleRule);
+    });
 });

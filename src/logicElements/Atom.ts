@@ -1,4 +1,6 @@
 import {Term} from "./Term"
+import {typesOfValue} from "../helper";
+import {parse} from "date-fns";
 
 /**
  * A atom that gets it value from the data
@@ -9,9 +11,12 @@ export class Atom extends Term{
      */
     public path: string;
 
-    constructor(path: string) {
+    public typeOfValue: typesOfValue;
+
+    constructor(path: string, typeOfValue: typesOfValue = typesOfValue.boolean) {
         super();
         this.path = path;
+        this.typeOfValue = typeOfValue;
     }
 
     /**
@@ -20,7 +25,7 @@ export class Atom extends Term{
      * @param s path
      * @private
      */
-    private static getPropertyByString(o: any, s: string): boolean {
+    private static getPropertyByString(o: any, s: string): boolean | string | number {
         s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
         s = s.replace(/^\./, '');           // strip a leading dot
         const a = s.split('.');
@@ -34,8 +39,20 @@ export class Atom extends Term{
         }
         return o;
     }
-    evaluate(data: Record<string, any>): boolean {
-        return Atom.getPropertyByString(data, this.path);
+
+    evaluate(data: Record<string, any>): boolean | Date | number | String {
+        function isValidDate(d:Date) {
+            return !isNaN(d.getTime());
+        }
+
+        const val = Atom.getPropertyByString(data, this.path);
+        if (typeof val === "string") {
+            const testDate = parse(val, "yyyy-MM-dd", new Date());
+            if (isValidDate(testDate)) {
+                return testDate;
+            }
+        }
+        return val;
     }
 
     validate(): boolean {
@@ -45,7 +62,8 @@ export class Atom extends Term{
     toJsonReady(): Record<string, any> {
         return {
             type: 'atom',
-            path: this.path
+            path: this.path,
+            typeOfValue: this.typeOfValue
         };
     }
 
