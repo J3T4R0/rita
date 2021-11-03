@@ -1,13 +1,14 @@
 import {Term} from "./Term"
 import {Atom} from "./Atom";
 import {Calculation} from "./Calculation";
+import {format} from "date-fns";
 
 enum comparisons {
-    equals="equals",
-    smaller="smaller",
-    greater="greater",
-    smallerOrEqual="smallerOrEqual",
-    greaterOrEqual="greaterOrEqual"
+    equals = "equals",
+    smaller = "smaller",
+    greater = "greater",
+    smallerOrEqual = "smallerOrEqual",
+    greaterOrEqual = "greaterOrEqual"
 }
 
 /**
@@ -17,7 +18,7 @@ export class Comparison extends Term {
     /**
      * The parameters of the operator
      */
-    public parameters: Array<(Atom| number| Date| String | Calculation)>
+    public parameters: Array<(Atom | number | Date | String | Calculation)>
 
     public operation: comparisons;
 
@@ -26,7 +27,7 @@ export class Comparison extends Term {
      * @param parameters The parameters
      * @param operation Type of the comparison
      */
-    constructor(parameters: Array<(Atom| number| Date| String)>, operation: comparisons) {
+    constructor(parameters: Array<(Atom | number | Date | String | Calculation)>, operation: comparisons) {
         super();
         this.parameters = parameters;
         this.operation = operation;
@@ -37,9 +38,12 @@ export class Comparison extends Term {
             type: "comparison",
             operation: this.operation,
             parameters: this.parameters.map(item => {
-                if (item instanceof Atom) {
+                if (item instanceof Atom || item instanceof Calculation) {
                     return item.toJsonReady();
-                } else {
+                } else if (item instanceof Date) {
+                    return format(item, "yyyy-MM-dd")
+                }
+                else{
                     return item;
                 }
             })
@@ -48,9 +52,9 @@ export class Comparison extends Term {
 
     evaluate(data: Record<string, any>): boolean {
         let p1, p2;
-        if(this.parameters[0] instanceof Atom || this.parameters[0] instanceof Calculation) p1 = this.parameters[0].evaluate(data);
-        if(this.parameters[1] instanceof Atom || this.parameters[1] instanceof Calculation) p2 = this.parameters[1].evaluate(data);
-        if(p1===undefined || p2 ===undefined) return false;
+        if (this.parameters[0] instanceof Atom || this.parameters[0] instanceof Calculation) p1 = this.parameters[0].evaluate(data);
+        if (this.parameters[1] instanceof Atom || this.parameters[1] instanceof Calculation) p2 = this.parameters[1].evaluate(data);
+        if (p1 === undefined || p2 === undefined) return false;
         switch (this.operation) {
             case comparisons.equals:
                 return p1 === p2;

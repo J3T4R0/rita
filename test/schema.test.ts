@@ -55,6 +55,6 @@ describe("Validate Rule example", () => {
     it("convert to Json", () => {
         const ruleset = Parser.parseRuleSet(exampleRule);
         const json = Parser.toJson(ruleset);
-        expect(JSON.parse(json)).toEqual(exampleRule);
+        expect({...JSON.parse(json), "$schema": "schema"}).toEqual({...exampleRule, "$schema": "schema"});
     });
 });

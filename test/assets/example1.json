@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
+  "$schema": "../../src/schema/schema.json",
   "rules": [
     {
       "id": "rule1",
@@ -8,14 +8,16 @@
         "parameters": [
           {
             "type": "atom",
-            "path": "member"
+            "path": "member",
+            "typeOfValue": "boolean"
           },
           {
             "type": "not",
             "parameters": [
               {
                 "type": "atom",
-                "path": "employee"
+                "path": "employee",
+                "typeOfValue": "boolean"
               }
             ]
           }
@@ -26,7 +28,8 @@
       "id": "rule2",
       "rule": {
         "type": "atom",
-        "path": "employee"
+        "path": "employee",
+        "typeOfValue": "boolean"
       }
     }
   ]
