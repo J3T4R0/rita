@@ -1,7 +1,6 @@
 import {Term} from "./Term"
 import {Atom} from "./Atom";
-import {Calculation} from "./Calculation";
-import {format} from "date-fns";
+import {Calculation, mapParameterToJSONReady} from "./Calculation";
 
 enum comparisons {
     equals = "equals",
@@ -18,7 +17,7 @@ export class Comparison extends Term {
     /**
      * The parameters of the operator
      */
-    public parameters: Array<(Atom | number | Date | String | Calculation)>
+    public parameters: Array<(Atom | number | Date | string | Calculation)>
 
     public operation: comparisons;
 
@@ -27,7 +26,7 @@ export class Comparison extends Term {
      * @param parameters The parameters
      * @param operation Type of the comparison
      */
-    constructor(parameters: Array<(Atom | number | Date | String | Calculation)>, operation: comparisons) {
+    constructor(parameters: Array<(Atom | number | Date | string | Calculation)>, operation: comparisons) {
         super();
         this.parameters = parameters;
         this.operation = operation;
@@ -37,16 +36,7 @@ export class Comparison extends Term {
         return {
             type: "comparison",
             operation: this.operation,
-            parameters: this.parameters.map(item => {
-                if (item instanceof Atom || item instanceof Calculation) {
-                    return item.toJsonReady();
-                } else if (item instanceof Date) {
-                    return format(item, "yyyy-MM-dd")
-                }
-                else{
-                    return item;
-                }
-            })
+            parameters: this.parameters.map(mapParameterToJSONReady)
         };
     }
 

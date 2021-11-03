@@ -1,25 +1,37 @@
 import {Atom} from "./Atom";
 import {Term} from "./Term";
 import {assertNumberOrDate} from "../assertions";
-import {add, sub, Duration} from "date-fns"
+import {add, sub, Duration, format} from "date-fns"
 
 enum dateUnits {
-    seconds="seconds",
-    minutes="minutes",
-    hours="hours",
-    days="days",
-    months="months",
-    years="years"
+    seconds = "seconds",
+    minutes = "minutes",
+    hours = "hours",
+    days = "days",
+    months = "months",
+    years = "years"
 }
 
 enum operations {
-    add="add",
-    subtract="subtract",
-    multiply="multiply",
-    divide="divide",
-    modulo="modulo"
+    add = "add",
+    subtract = "subtract",
+    multiply = "multiply",
+    divide = "divide",
+    modulo = "modulo"
 }
-export class Calculation extends Term{
+
+export function mapParameterToJSONReady(item: Atom | number | Date | string | Calculation) {
+    if (item instanceof Atom || item instanceof Calculation) {
+        return item.toJsonReady();
+    } else if (item instanceof Date) {
+        return format(item, "yyyy-MM-dd")
+    } else {
+        return item;
+    }
+
+}
+
+export class Calculation extends Term {
     public parameters: Array<Atom | number | Date | Calculation>;
 
     public operation: operations;
@@ -29,7 +41,7 @@ export class Calculation extends Term{
     public dateCalculationUnit: dateUnits;
 
 
-    constructor(parameters: Array<Atom | number | Date | Calculation>, operation: operations, dateResultUnit: dateUnits=dateUnits.seconds, dateCalculationUnit: dateUnits=dateUnits.seconds) {
+    constructor(parameters: Array<Atom | number | Date | Calculation>, operation: operations, dateResultUnit: dateUnits = dateUnits.seconds, dateCalculationUnit: dateUnits = dateUnits.seconds) {
         super();
         this.parameters = parameters;
         this.operation = operation;
@@ -37,7 +49,7 @@ export class Calculation extends Term{
         this.dateCalculationUnit = dateCalculationUnit;
     }
 
-    private dateMath(func: (x1: number, x2:number)=> number):(d1: Date | Duration, d2: Date | Duration) => Date|Duration {
+    private dateMath(func: (x1: number, x2: number) => number): (d1: Date | Duration, d2: Date | Duration) => Date | Duration {
         function unionSet(setA: Array<string>, setB: Array<string>): Array<string> {
             let _union = new Set(setA);
             for (let elem of setB) {
@@ -129,8 +141,13 @@ export class Calculation extends Term{
     }
 
     toJsonReady(): Record<string, any> {
-        //@TODO
-        return {};
+        return {
+            type: "calculation",
+            operation: this.operation,
+            parameters: this.parameters.map(mapParameterToJSONReady),
+            dateResultUnit: this.dateResultUnit,
+            dateCalculationUnit: this.dateCalculationUnit
+        };
     }
 
     validate(): boolean {
