@@ -15,7 +15,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "postinstall": "husky install && husky add .husky/commit-msg 'npx --no-install commitlint --edit \"$1\"'",
+    "postinstall": "husky install",
     "start": "tsdx watch",
     "build": "tsdx build",
     "postbuild": "npm run zip",
