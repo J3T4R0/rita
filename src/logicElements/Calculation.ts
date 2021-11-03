@@ -151,7 +151,6 @@ export class Calculation extends Term {
     }
 
     validate(): boolean {
-        //@TODO
-        return true;
+        return this.parameters.length >= 2;
     }
 }

@@ -60,7 +60,6 @@ export class Comparison extends Term {
     }
 
     validate(): boolean {
-        //@TODO
-        return true;
+        return this.parameters.length === 2;
     }
 }
