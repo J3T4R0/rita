@@ -3,6 +3,7 @@ import addFormats from "ajv-formats"
 import {Parser} from "../src";
 import exampleRule from "./assets/example1.json"
 import exampleMath from "./assets/exampleMath.json"
+import exampleMathSimple from "./assets/mathSimple.json"
 import wrongExampleRule from "./assets/example_wrong.json"
 
 const schemas = [
@@ -38,14 +39,19 @@ function validateSchema(schema: Record<string, any>, expected = true) {
     expect(result.valid).toBe(expected);
 }
 
-describe("Validate Rule example", () => {
-    it("Correct Rule", () => {
+describe("Validate Rule examples", () => {
+    it("Example", () => {
         validateSchema(exampleRule);
     });
 
-    it("Correct comparison and calculation", () => {
+    it("Math Simple", () => {
+        validateSchema(exampleMathSimple);
+    });
+
+    it("Math", () => {
         validateSchema(exampleMath);
     });
+
     it("Wrong Rule", () => {
         const result = parser.validateRuleSetJSON(wrongExampleRule);
         expect(result.valid).toBe(false);

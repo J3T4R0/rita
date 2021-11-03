@@ -36,7 +36,7 @@
           },
           {
             "type": "string",
-            "format": "date-time"
+            "format": "date"
           },
           {
             "type": "string"
