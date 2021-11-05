@@ -1,6 +1,6 @@
 import {Atom} from "./Atom";
 import {Term} from "./Term";
-import {assertNumberOrDate} from "../assertions";
+import {assertNumberOrDate} from "../Assertions";
 import {add, sub, Duration, format} from "date-fns"
 
 enum dateUnits {

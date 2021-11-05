@@ -88,5 +88,8 @@
   },
   "bugs": {
     "url": "https://github.com/educorvi/rita/issues"
+  },
+  "jest": {
+    "collectCoverageFrom": ["src/**/{!(Logger),(Assertions)}.ts"]
   }
 }

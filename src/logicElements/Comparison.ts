@@ -1,6 +1,7 @@
 import {Term} from "./Term"
 import {Atom} from "./Atom";
 import {Calculation, mapParameterToJSONReady} from "./Calculation";
+import {UnimplementedError} from "../Errors";
 
 enum comparisons {
     equals = "equals",
@@ -41,9 +42,8 @@ export class Comparison extends Term {
     }
 
     evaluate(data: Record<string, any>): boolean {
-        let p1, p2;
-        if (this.parameters[0] instanceof Atom || this.parameters[0] instanceof Calculation) p1 = this.parameters[0].evaluate(data);
-        if (this.parameters[1] instanceof Atom || this.parameters[1] instanceof Calculation) p2 = this.parameters[1].evaluate(data);
+        const p1 = (this.parameters[0] instanceof Atom || this.parameters[0] instanceof Calculation) ? this.parameters[0].evaluate(data): this.parameters[0];
+        const p2 = (this.parameters[1] instanceof Atom || this.parameters[1] instanceof Calculation)? this.parameters[1].evaluate(data):this.parameters[1];
         if (p1 === undefined || p2 === undefined) return false;
         switch (this.operation) {
             case comparisons.equals:
@@ -56,6 +56,8 @@ export class Comparison extends Term {
                 return p1 < p2;
             case comparisons.smallerOrEqual:
                 return p1 <= p2;
+            default:
+                throw new UnimplementedError("Unknown operation");
         }
     }
 

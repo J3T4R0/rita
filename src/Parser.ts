@@ -1,9 +1,11 @@
-import {Term, Operator, Atom, Rule, And, Not, Or, Xor} from "./logicElements"
+import {Term, Operator, Atom, Rule, And, Not, Or, Xor, Comparison, testForDate} from "./logicElements"
 import Ajv from 'ajv/dist/2019';
 import schemas from "./schema"
 import {schema} from "./schema"
 import {AnyValidateFunction} from "ajv/dist/types";
 import addFormats from "ajv-formats";
+import {UnimplementedError} from "./Errors";
+import {Calculation} from "./logicElements/Calculation";
 
 /**
  * Results for validateRuleJSON
@@ -94,6 +96,8 @@ export default class Parser {
         switch (jsonRuleset["type"]) {
             case "atom":
                 return Parser.parseAtom(jsonRuleset);
+            case "comparison":
+                return Parser.parseComparison(jsonRuleset);
             default:
                 return Parser.parseOperator(jsonRuleset);
         }
@@ -118,7 +122,7 @@ export default class Parser {
             case "xor":
                 return new Xor(parameters)
             default:
-                throw new Error("Invalid type: " + jsonRuleset["type"]);
+                throw new UnimplementedError(jsonRuleset["type"] + " is not implemented");
         }
     }
 
@@ -129,6 +133,25 @@ export default class Parser {
     public static parseAtom(jsonRuleset: Record<string, any>): Atom {
         return new Atom(jsonRuleset["path"]);
     }
+
+    private static parseComparisonParams(parameters: Array<number | string | Record<string, any>>): Array<(Atom | number | Date | string | Calculation)> {
+        const params = [];
+        for (const parameter of parameters) {
+            if (typeof parameter === "number") {
+                params.push(parameter);
+            } else if (typeof parameter === "string") {
+                params.push(testForDate(parameter));
+            } else {
+                params.push(<Atom | Calculation>this.parseTerm(parameter));
+            }
+        }
+        return params;
+    }
+
+    public static parseComparison(jsonRuleset: Record<string, any>): Comparison {
+        return new Comparison(this.parseComparisonParams(jsonRuleset["parameters"]), jsonRuleset["operation"]);
+    }
+
 
     /**
      * Turn an array of rule objects back into a json ruleset

@@ -2,10 +2,20 @@ import {Term} from "./Term"
 import {typesOfValue} from "../helper";
 import {parse} from "date-fns";
 
+
+export function testForDate(val: string): string | Date {
+    const testDate = parse(val, "yyyy-MM-dd", new Date());
+    if (!isNaN(testDate.getTime())) {
+        return testDate;
+    }
+    return val;
+}
+
+
 /**
  * A atom that gets it value from the data
  */
-export class Atom extends Term{
+export class Atom extends Term {
     /**
      * The path of the value in the data
      */
@@ -34,23 +44,17 @@ export class Atom extends Term{
             if (k in o) {
                 o = o[k];
             } else {
-                throw new Error("Undefinded path in data: "+s)
+                throw new Error("Undefinded path in data: " + s)
             }
         }
         return o;
     }
 
     evaluate(data: Record<string, any>): boolean | Date | number | String {
-        function isValidDate(d:Date) {
-            return !isNaN(d.getTime());
-        }
-
         const val = Atom.getPropertyByString(data, this.path);
+
         if (typeof val === "string") {
-            const testDate = parse(val, "yyyy-MM-dd", new Date());
-            if (isValidDate(testDate)) {
-                return testDate;
-            }
+            return testForDate(val);
         }
         return val;
     }
