@@ -57,7 +57,7 @@
       "default": "seconds"
     },
     "dateCalculationUnit": {
-      "description": "Which unit is to use when adding/subtracting with dates.",
+      "description": "Which unit is to use when adding/subtracting number from/with dates.",
       "type": "string",
       "enum": [
         "seconds",

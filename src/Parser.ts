@@ -98,6 +98,8 @@ export default class Parser {
                 return Parser.parseAtom(jsonRuleset);
             case "comparison":
                 return Parser.parseComparison(jsonRuleset);
+            case "calculation":
+                return Parser.parseCalculation(jsonRuleset);
             default:
                 return Parser.parseOperator(jsonRuleset);
         }
@@ -150,6 +152,24 @@ export default class Parser {
 
     public static parseComparison(jsonRuleset: Record<string, any>): Comparison {
         return new Comparison(this.parseComparisonParams(jsonRuleset["parameters"]), jsonRuleset["operation"]);
+    }
+
+    private static parseCalculationParams(parameters: Array<number | string | Record<string, any>>): Array<(Atom | number | Date | Calculation)> {
+        const params = [];
+        for (const parameter of parameters) {
+            if (typeof parameter === "number") {
+                params.push(parameter);
+            } else if (typeof parameter === "string") {
+                params.push(<Date>testForDate(parameter));
+            } else {
+                params.push(<Atom | Calculation>this.parseTerm(parameter));
+            }
+        }
+        return params;
+    }
+
+    public static parseCalculation(jsonRuleset: Record<string, any>): Calculation {
+        return new Calculation(this.parseCalculationParams(jsonRuleset["parameters"]),jsonRuleset["operation"], jsonRuleset["dateResultUnit"], jsonRuleset["dateCalculationUnit"])
     }
 
 

@@ -58,9 +58,15 @@ describe("Validate Rule examples", () => {
         expect(result.errors).not.toHaveLength(0)
     });
 
-    it("convert to Json", () => {
-        const ruleset = Parser.parseRuleSet(exampleRule);
-        const json = Parser.toJson(ruleset);
-        expect({...JSON.parse(json), "$schema": "schema"}).toEqual({...exampleRule, "$schema": "schema"});
+    describe("convert to objects and back to json", () => {
+        const examples = [exampleRule, exampleMathSimple, exampleMath];
+        for (let i = 0; i<examples.length; i++) {
+            const example = examples[i];
+            it("Ruleset "+i, () => {
+                const ruleset = Parser.parseRuleSet(example);
+                const json = Parser.toJson(ruleset);
+                expect({...JSON.parse(json), "$schema": "schema"}).toEqual({...example, "$schema": "schema"});
+            });
+        }
     });
 });

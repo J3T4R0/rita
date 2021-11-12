@@ -21,13 +21,14 @@
           4,
           {
             "type": "calculation",
+            "dateCalculationUnit": "seconds",
+            "dateResultUnit": "seconds",
             "operation": "subtract",
             "parameters": [
               14.99,
               {
                 "type": "atom",
-                "path": "visit.priceWithoutTax",
-                "typeOfValue": "number"
+                "path": "visit.priceWithoutTax"
               }
             ]
           }

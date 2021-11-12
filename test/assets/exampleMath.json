@@ -15,11 +15,11 @@
                 "type": "calculation",
                 "operation": "subtract",
                 "dateResultUnit": "years",
+                "dateCalculationUnit": "seconds",
                 "parameters": [
                   "2021-07-21",
                   {
                     "type": "atom",
-                    "typeOfValue": "Date",
                     "path": "dateOfBirth"
                   }
                 ]
@@ -35,15 +35,15 @@
               {
                 "type": "calculation",
                 "operation": "add",
+                "dateCalculationUnit": "seconds",
+                "dateResultUnit": "seconds",
                 "parameters": [
                   {
                     "type": "atom",
-                    "typeOfValue": "number",
                     "path": "visit.priceWithoutTax"
                   },
                   {
                     "type": "atom",
-                    "typeOfValue": "number",
                     "path": "visit.tax"
                   }
                 ]
@@ -62,8 +62,7 @@
           "Julian",
           {
             "type": "atom",
-            "path": "name",
-            "typeOfValue": "String"
+            "path": "name"
           }
         ]
       }

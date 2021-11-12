@@ -1,10 +1,9 @@
 import {Term} from "./Term"
-import {typesOfValue} from "../helper";
-import {parse} from "date-fns";
+import {DateTime} from "luxon";
 
 
 export function testForDate(val: string): string | Date {
-    const testDate = parse(val, "yyyy-MM-dd", new Date());
+    const testDate = DateTime.fromFormat(val, "yyyy-MM-dd").toJSDate();
     if (!isNaN(testDate.getTime())) {
         return testDate;
     }
@@ -21,12 +20,9 @@ export class Atom extends Term {
      */
     public path: string;
 
-    public typeOfValue: typesOfValue;
-
-    constructor(path: string, typeOfValue: typesOfValue = typesOfValue.boolean) {
+    constructor(path: string) {
         super();
         this.path = path;
-        this.typeOfValue = typeOfValue;
     }
 
     /**
@@ -66,8 +62,7 @@ export class Atom extends Term {
     toJsonReady(): Record<string, any> {
         return {
             type: 'atom',
-            path: this.path,
-            typeOfValue: this.typeOfValue
+            path: this.path
         };
     }
 

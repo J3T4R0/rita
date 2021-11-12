@@ -8,16 +8,14 @@
         "parameters": [
           {
             "type": "atom",
-            "path": "member",
-            "typeOfValue": "boolean"
+            "path": "member"
           },
           {
             "type": "not",
             "parameters": [
               {
                 "type": "atom",
-                "path": "employee",
-                "typeOfValue": "boolean"
+                "path": "employee"
               }
             ]
           }
@@ -28,8 +26,7 @@
       "id": "rule2",
       "rule": {
         "type": "atom",
-        "path": "employee",
-        "typeOfValue": "boolean"
+        "path": "employee"
       }
     }
   ]

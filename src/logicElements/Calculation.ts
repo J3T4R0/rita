@@ -1,7 +1,8 @@
 import {Atom} from "./Atom";
 import {Term} from "./Term";
 import {assertNumberOrDate} from "../Assertions";
-import {add, sub, Duration, format} from "date-fns"
+import {DateTime, Duration, DurationObjectUnits} from "luxon";
+
 
 enum dateUnits {
     seconds = "seconds",
@@ -24,7 +25,7 @@ export function mapParameterToJSONReady(item: Atom | number | Date | string | Ca
     if (item instanceof Atom || item instanceof Calculation) {
         return item.toJsonReady();
     } else if (item instanceof Date) {
-        return format(item, "yyyy-MM-dd")
+        return DateTime.fromJSDate(item).toFormat("yyyy-MM-dd")
     } else {
         return item;
     }
@@ -49,47 +50,39 @@ export class Calculation extends Term {
         this.dateCalculationUnit = dateCalculationUnit;
     }
 
-    private dateMath(func: (x1: number, x2: number) => number): (d1: Date | Duration, d2: Date | Duration) => Date | Duration {
-        function unionSet(setA: Array<string>, setB: Array<string>): Array<string> {
-            let _union = new Set(setA);
-            for (let elem of setB) {
-                _union.add(elem);
-            }
-            return Array.from(_union);
-        }
+    private dateMath(func: (x1: number, x2: number) => number): (d1: Date | DurationObjectUnits, d2: Date | DurationObjectUnits) => Date  | DurationObjectUnits {
 
         const operation = this.operation;
 
-        return function (d1: Date | Duration, d2: Date | Duration) {
+        return function (d1: Date | DurationObjectUnits, d2: Date | DurationObjectUnits) {
+
             if (d1 instanceof Date && d2 instanceof Date) {
-                return new Date(func(d1.getTime(), d2.getTime()));
+                const d: Duration = Duration.fromMillis(func(d1.getTime(), d2.getTime()));
+                return d.toObject();
             }
             if (!(d1 instanceof Date) && !(d2 instanceof Date)) {
-                const keys = unionSet(Object.keys(d1), Object.keys(d2));
-                const d: Duration = {};
-                for (let key of keys) {
-                    // @ts-ignore
-                    d[key] = d1[key] | 0 + d2[key] | 0;
-                }
-                return d;
+                const d_p1: Duration = Duration.fromObject(d1);
+                const d_p2: Duration = Duration.fromObject(d2);
+                return Duration.fromMillis(func(d_p1.toMillis(), d_p2.toMillis())).toObject();
             }
 
             let date: Date;
             let duration: Duration;
             if (d1 instanceof Date && !(d2 instanceof Date)) {
                 date = d1;
-                duration = d2;
+                duration = <Duration>d2;
             } else {
                 date = <Date>d2;
                 duration = <Duration>d1;
             }
+            const lDate: DateTime = DateTime.fromJSDate(date);
             switch (operation) {
                 case operations.add:
-                    return add(date, duration);
+                    return lDate.plus(duration).toJSDate();
                 case operations.subtract:
-                    return sub(date, duration);
+                    return lDate.minus(duration).toJSDate();
                 default:
-                    throw new TypeError("Invalid Operation for Dates")
+                    throw new TypeError("Invalid Operation for Dates");
             }
 
         }
@@ -109,9 +102,10 @@ export class Calculation extends Term {
                 break;
             case operations.divide:
                 func = (x1, x2) => x1 / x2;
-                break
+                break;
             case operations.modulo:
                 func = (x1, x2) => x1 % x2;
+                break;
         }
 
         let results = this.parameters.map(item => ((item instanceof Calculation) || (item instanceof Atom)) ? item.evaluate(data) : item);
@@ -126,14 +120,21 @@ export class Calculation extends Term {
             const tmp = results.map(item => {
                 assertNumberOrDate(item);
                 if (typeof item === 'number') {
-                    let d: Duration;
+                    let d: DurationObjectUnits;
                     d = {[this.dateCalculationUnit]: item};
                     return d;
                 } else {
                     return item;
                 }
             });
-            return <Date>tmp.reduce(this.dateMath(func), {days: 0});
+            const res = tmp.splice(1).reduce(this.dateMath(func), tmp[0]);
+            if (res instanceof Date) {
+                return res;
+            }
+            return Duration.fromObject(res).as(this.dateResultUnit);
+
+
+
         } else {
             return <number>results.splice(1).reduce(func, results[0]);
 
