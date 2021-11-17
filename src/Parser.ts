@@ -85,7 +85,7 @@ export default class Parser {
      * @param jsonRuleset the rule
      */
     public static parseRule(jsonRuleset: Record<string, any>): Rule {
-        return new Rule(jsonRuleset["id"], Parser.parseTerm(jsonRuleset["rule"]));
+        return new Rule(jsonRuleset["id"], Parser.parseTerm(jsonRuleset["rule"]), jsonRuleset["comment"]);
     }
 
     /**

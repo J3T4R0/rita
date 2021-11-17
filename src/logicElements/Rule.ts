@@ -4,18 +4,26 @@ import {Term} from "./Term";
  * A Rule that can be evaluated
  */
 export class Rule {
+
     /**
      * The id of the rule
      */
     public readonly id: string;
+
     /**
      * The root of the rule
      */
     public rule: Term;
 
-    constructor(id: string, rule: Term) {
+    /**
+     * A comment about what the rule does
+     */
+    public comment: string;
+
+    constructor(id: string, rule: Term, comment: string) {
         this.id = id;
         this.rule = rule;
+        this.comment = comment;
     }
 
     public evaluate(data: Record<string, any>): boolean {
@@ -25,7 +33,8 @@ export class Rule {
     public toJsonReady(): Record<string, any> {
         return {
             id: this.id,
-            rule: this.rule.toJsonReady()
+            rule: this.rule.toJsonReady(),
+            comment: this.comment
         }
     }
 }
