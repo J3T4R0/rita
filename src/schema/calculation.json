@@ -35,7 +35,7 @@
           },
           {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
           },
           {
             "$ref": "calculation.json"

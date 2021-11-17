@@ -25,7 +25,7 @@ export function mapParameterToJSONReady(item: Atom | number | Date | string | Ca
     if (item instanceof Atom || item instanceof Calculation) {
         return item.toJsonReady();
     } else if (item instanceof Date) {
-        return DateTime.fromJSDate(item).toFormat("yyyy-MM-dd")
+        return DateTime.fromJSDate(item).toISO();
     } else {
         return item;
     }

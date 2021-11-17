@@ -16,7 +16,7 @@ export const exampleData = {
             rated: true
         }
     ],
-    dateOfBirth: "2000-01-01",
+    dateOfBirth: "2000-01-01T00:00:00+00:00",
     name: "Julian"
 }
 

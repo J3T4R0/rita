@@ -3,7 +3,7 @@ import {DateTime} from "luxon";
 
 
 export function testForDate(val: string): string | Date {
-    const testDate = DateTime.fromFormat(val, "yyyy-MM-dd").toJSDate();
+    const testDate = DateTime.fromISO(val).toJSDate();
     if (!isNaN(testDate.getTime())) {
         return testDate;
     }
