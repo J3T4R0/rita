@@ -42,10 +42,11 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json
 
 # Rule Properties
 
-| Property      | Type     | Required | Nullable       | Defined by                                                                                                               |
-| :------------ | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)     | `string` | Required | cannot be null | [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/id") |
-| [rule](#rule) | Merged   | Required | cannot be null | [Rule](term.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/term.json#/properties/rule")             |
+| Property            | Type     | Required | Nullable       | Defined by                                                                                                                         |
+| :------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)           | `string` | Required | cannot be null | [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/id")           |
+| [comment](#comment) | `string` | Optional | cannot be null | [Rule](rule-properties-comment.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/comment") |
+| [rule](#rule)       | Merged   | Required | cannot be null | [Rule](term.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/term.json#/properties/rule")                       |
 
 ## id
 
@@ -62,6 +63,24 @@ https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json
 *   defined in: [Rule](rule-properties-id.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/id")
 
 ### id Type
+
+`string`
+
+## comment
+
+A comment about what the rule does
+
+`comment`
+
+*   is optional
+
+*   Type: `string`
+
+*   cannot be null
+
+*   defined in: [Rule](rule-properties-comment.md "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/rule.json#/properties/comment")
+
+### comment Type
 
 `string`
 
@@ -92,3 +111,5 @@ one (and only one) of
     *   [Unary operator](operator-oneof-unary-operator.md "check type definition")
 
 *   [Atom](atom.md "check type definition")
+
+*   [Comparison](comparison.md "check type definition")
