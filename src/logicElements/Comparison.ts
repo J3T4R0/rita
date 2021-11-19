@@ -3,6 +3,9 @@ import {Atom} from "./Atom";
 import {Calculation, mapParameterToJSONReady} from "./Calculation";
 import {UnimplementedError} from "../Errors";
 
+/**
+ * Types of comparisons
+ */
 enum comparisons {
     equals = "equals",
     smaller = "smaller",
@@ -16,10 +19,13 @@ enum comparisons {
  */
 export class Comparison extends Term {
     /**
-     * The parameters of the operator
+     * The parameters of the comparison
      */
     public parameters: Array<(Atom | number | Date | string | Calculation)>
 
+    /**
+     * Type of the comparison
+     */
     public operation: comparisons;
 
     /**
@@ -42,9 +48,12 @@ export class Comparison extends Term {
     }
 
     evaluate(data: Record<string, any>): boolean {
+        //if one of the parameters is either an Atom or a Calculation evaluate it first
         const p1 = (this.parameters[0] instanceof Atom || this.parameters[0] instanceof Calculation) ? this.parameters[0].evaluate(data): this.parameters[0];
         const p2 = (this.parameters[1] instanceof Atom || this.parameters[1] instanceof Calculation)? this.parameters[1].evaluate(data):this.parameters[1];
+
         if (p1 === undefined || p2 === undefined) return false;
+
         switch (this.operation) {
             case comparisons.equals:
                 return p1 === p2;

@@ -114,6 +114,14 @@ export class Or extends Operator {
  * NOT the same thing as "only on" for more than two parameters, e.g.: true xor true xor true = (true xor true) xor true = false xor true = true
  */
 export class Xor extends Operator {
+
+    /**
+     * Actual xor function
+     * @param a first parameter
+     * @param b second parameter
+     * @return a xor b
+     * @private
+     */
     private static xor(a: boolean, b: boolean): boolean {
         return (a || b) && !(a && b)
     }

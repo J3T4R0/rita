@@ -23,6 +23,15 @@ describe("Numbers", () => {
 
         expect(calc.evaluate({})).toBe(-4);
     });
+    it("subtract with three arguments", () => {
+        const calc = Parser.parseCalculation({
+            type: "calculation",
+            operation: "subtract",
+            parameters: [6, 2, 2]
+        });
+
+        expect(calc.evaluate({})).toBe(2);
+    });
     it("multiply", () => {
         const calc = Parser.parseCalculation({
             type: "calculation",
