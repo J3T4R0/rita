@@ -4,7 +4,7 @@ import {assertNumberOrDate} from "../Assertions";
 import {DateTime, Duration, DurationObjectUnits} from "luxon";
 
 
-enum dateUnits {
+enum timeUnits {
     seconds = "seconds",
     minutes = "minutes",
     hours = "hours",
@@ -37,12 +37,12 @@ export class Calculation extends Term {
 
     public operation: operations;
 
-    public dateResultUnit: dateUnits;
+    public dateResultUnit: timeUnits;
 
-    public dateCalculationUnit: dateUnits;
+    public dateCalculationUnit: timeUnits;
 
 
-    constructor(parameters: Array<Atom | number | Date | Calculation>, operation: operations, dateResultUnit: dateUnits = dateUnits.seconds, dateCalculationUnit: dateUnits = dateUnits.seconds) {
+    constructor(parameters: Array<Atom | number | Date | Calculation>, operation: operations, dateResultUnit: timeUnits = timeUnits.seconds, dateCalculationUnit: timeUnits = timeUnits.seconds) {
         super();
         this.parameters = parameters;
         this.operation = operation;

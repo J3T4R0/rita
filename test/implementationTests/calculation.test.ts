@@ -109,6 +109,43 @@ describe("Dates", () => {
         });
         expect(formatDate(<Date>calc.evaluate(exampleData))).toEqual(formatDate(new Date("2021-11-10")));
     });
+    it("two days ago from 12.11.2021 in different order", () => {
+        const calc = Parser.parseCalculation({
+            type: "calculation",
+            operation: "subtract",
+            dateCalculationUnit: "days",
+            parameters: [
+                2,
+                "2021-11-12"
+            ]
+        });
+        expect(formatDate(<Date>calc.evaluate(exampleData))).toEqual(formatDate(new Date("2021-11-10")));
+    });
+    it("can't divide dates", () => {
+        const calc = Parser.parseCalculation({
+            type: "calculation",
+            operation: "divide",
+            dateCalculationUnit: "days",
+            parameters: [
+                2,
+                "2021-11-12"
+            ]
+        });
+        expect(calc.evaluate).toThrow(Error);
+    });
+    it("2+2 days from 12.11.2021", () => {
+        const calc = Parser.parseCalculation({
+            type: "calculation",
+            operation: "add",
+            dateCalculationUnit: "days",
+            parameters: [
+                2,
+                2,
+                "2021-11-12"
+            ]
+        });
+        expect(formatDate(<Date>calc.evaluate(exampleData))).toEqual(formatDate(new Date("2021-11-16")));
+    });
     it("two years in the future from 12.11.2021", () => {
         const calc = Parser.parseCalculation({
             type: "calculation",
@@ -120,5 +157,17 @@ describe("Dates", () => {
             ]
         });
         expect(formatDate(<Date>calc.evaluate(exampleData))).toEqual(formatDate(new Date("2023-11-12")));
+    });
+    it("time difference less then 2 minutes", () => {
+        const calc = Parser.parseCalculation({
+            type: "calculation",
+            operation: "subtract",
+            dateResultUnit: "minutes",
+            parameters: [
+                "2021-11-12T09:29",
+                "2021-11-12T09:27:30"
+            ]
+        });
+        expect(calc.evaluate({})).toBeLessThan(2);
     });
 });
