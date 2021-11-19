@@ -2,5 +2,8 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  roots: ["<rootDir>/test"]
+  roots: ["<rootDir>/test"],
+  "collectCoverageFrom": [
+    "src/**/{!(Logger),(Assertions)}.ts"
+  ]
 };
