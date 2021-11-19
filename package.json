@@ -15,7 +15,6 @@
     "node": ">=10"
   },
   "scripts": {
-    "postinstall": "husky install",
     "start": "tsdx watch",
     "build": "tsdx build",
     "postbuild": "npm run zip",
@@ -25,7 +24,7 @@
     "zip:schema": "bestzip dist_zip/schema.zip src/schema/*",
     "test": "jest",
     "lint": "tsdx lint",
-    "prepare": "npm run build",
+    "prepare": "husky install",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "semantic-release": "semantic-release",
