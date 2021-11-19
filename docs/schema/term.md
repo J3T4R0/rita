@@ -23,3 +23,5 @@ one (and only one) of
     *   [Unary operator](operator-oneof-unary-operator.md "check type definition")
 
 *   [Atom](atom.md "check type definition")
+
+*   [Comparison](comparison.md "check type definition")
