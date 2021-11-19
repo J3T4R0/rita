@@ -1,0 +1,71 @@
+{
+  "$schema": "../../src/schema/schema.json",
+  "rules": [
+    {
+      "id": "rule1",
+      "comment": "The time between the date of birth and the 21st of July 2021 must be at least 18 years or 20 must be more than the price plus tax.",
+      "rule": {
+        "type": "or",
+        "parameters": [
+          {
+            "type": "comparison",
+            "operation": "greaterOrEqual",
+            "parameters": [
+              {
+                "type": "calculation",
+                "operation": "subtract",
+                "dateResultUnit": "years",
+                "dateCalculationUnit": "seconds",
+                "parameters": [
+                  "2021-07-21T02:00:00.000+02:00",
+                  {
+                    "type": "atom",
+                    "path": "dateOfBirth"
+                  }
+                ]
+              },
+              18
+            ]
+          },
+          {
+            "type": "comparison",
+            "operation": "greater",
+            "parameters": [
+              20,
+              {
+                "type": "calculation",
+                "operation": "add",
+                "dateCalculationUnit": "seconds",
+                "dateResultUnit": "seconds",
+                "parameters": [
+                  {
+                    "type": "atom",
+                    "path": "visit.priceWithoutTax"
+                  },
+                  {
+                    "type": "atom",
+                    "path": "visit.tax"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "string-comparison",
+      "rule": {
+        "type": "comparison",
+        "operation": "equal",
+        "parameters": [
+          "Julian",
+          {
+            "type": "atom",
+            "path": "name"
+          }
+        ]
+      }
+    }
+  ]
+}

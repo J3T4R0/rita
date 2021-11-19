@@ -4,7 +4,9 @@ export const exampleData = {
     visit: {
         paymentDetails: {
             payed: true
-        }
+        },
+        priceWithoutTax: 10.99,
+        tax: 1
     },
     customers: [
         {
@@ -13,7 +15,9 @@ export const exampleData = {
         {
             rated: true
         }
-    ]
+    ],
+    dateOfBirth: "2000-01-01T00:00:00+00:00",
+    name: "Julian"
 }
 
 export const ruleTemplate = {

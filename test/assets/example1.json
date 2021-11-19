@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json",
+  "$schema": "../../src/schema/schema.json",
   "rules": [
     {
       "id": "rule1",
@@ -20,6 +20,13 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "id": "rule2",
+      "rule": {
+        "type": "atom",
+        "path": "employee"
       }
     }
   ]

@@ -1,9 +1,20 @@
 import {Term} from "./Term"
+import {DateTime} from "luxon";
+
+
+export function testForDate(val: string): string | Date {
+    const testDate = DateTime.fromISO(val).toJSDate();
+    if (!isNaN(testDate.getTime())) {
+        return testDate;
+    }
+    return val;
+}
+
 
 /**
  * A atom that gets it value from the data
  */
-export class Atom extends Term{
+export class Atom extends Term {
     /**
      * The path of the value in the data
      */
@@ -20,7 +31,7 @@ export class Atom extends Term{
      * @param s path
      * @private
      */
-    private static getPropertyByString(o: any, s: string): boolean {
+    private static getPropertyByString(o: any, s: string): boolean | string | number {
         s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
         s = s.replace(/^\./, '');           // strip a leading dot
         const a = s.split('.');
@@ -29,13 +40,19 @@ export class Atom extends Term{
             if (k in o) {
                 o = o[k];
             } else {
-                throw new Error("Undefinded path in data: "+s)
+                throw new Error("Undefinded path in data: " + s)
             }
         }
         return o;
     }
-    evaluate(data: Record<string, any>): boolean {
-        return Atom.getPropertyByString(data, this.path);
+
+    evaluate(data: Record<string, any>): boolean | Date | number | String {
+        const val = Atom.getPropertyByString(data, this.path);
+
+        if (typeof val === "string") {
+            return testForDate(val);
+        }
+        return val;
     }
 
     validate(): boolean {

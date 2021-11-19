@@ -18,9 +18,15 @@ export abstract class Operator extends Term {
         this.parameters = parameters;
     }
 
-    abstract evaluate(data: Record<string, any>): boolean
+    abstract evaluate(data: Record<string, any>): boolean;
 
     abstract validate(): boolean;
+
+    evaluateReduce(data: Record<string, any>, func:(x1: boolean, x2: boolean)=>boolean, defaultValue = false) {
+        return this.parameters.reduce((acc: boolean, curr: Term):boolean => {
+            return func(acc, <boolean>curr.evaluate(data));
+        }, defaultValue);
+    }
 
     toJsonReady(): Record<string, any> {
         return {
@@ -38,7 +44,8 @@ export class And extends Operator {
         if (!this.validate()) {
             throw new Error("'and' needs at least two parameters")
         }
-        return this.parameters.reduce((acc: boolean, curr: Term):boolean => acc && curr.evaluate(data), true);
+
+        return this.evaluateReduce(data, (x1, x2) => x1 && x2, true)
     }
 
     validate(): boolean {
@@ -86,7 +93,7 @@ export class Or extends Operator {
         if (!this.validate()) {
             throw new Error("'or' needs at least two parameters")
         }
-        return this.parameters.reduce((acc: boolean, curr: Term):boolean => acc || curr.evaluate(data), false);
+        return this.evaluateReduce(data, (x1, x2) => x1 || x2)
     }
 
     validate(): boolean {
@@ -107,6 +114,14 @@ export class Or extends Operator {
  * NOT the same thing as "only on" for more than two parameters, e.g.: true xor true xor true = (true xor true) xor true = false xor true = true
  */
 export class Xor extends Operator {
+
+    /**
+     * Actual xor function
+     * @param a first parameter
+     * @param b second parameter
+     * @return a xor b
+     * @private
+     */
     private static xor(a: boolean, b: boolean): boolean {
         return (a || b) && !(a && b)
     }
@@ -115,7 +130,7 @@ export class Xor extends Operator {
         if (!this.validate()) {
             throw new Error("'xor' needs at least two parameters")
         }
-        return this.parameters.reduce((acc: boolean, curr: Term): boolean => Xor.xor(acc, curr.evaluate(data)), false);
+        return this.evaluateReduce(data, Xor.xor)
     }
 
     validate(): boolean {

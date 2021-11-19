@@ -1,8 +1,11 @@
-import {Term, Operator, Atom, Rule, And, Not, Or, Xor} from "./elements"
+import {Term, Operator, Atom, Rule, And, Not, Or, Xor, Comparison, testForDate} from "./logicElements"
 import Ajv from 'ajv/dist/2019';
 import schemas from "./schema"
 import {schema} from "./schema"
 import {AnyValidateFunction} from "ajv/dist/types";
+import addFormats from "ajv-formats";
+import {UnimplementedError} from "./Errors";
+import {Calculation} from "./logicElements/Calculation";
 
 /**
  * Results for validateRuleJSON
@@ -43,7 +46,9 @@ export default class Parser {
      */
     public static getParser(): Parser {
         if (!Parser.parser) {
-            const validate = new Ajv({schemas: schemas}).getSchema("https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json");
+            const ajv = new Ajv({schemas: schemas});
+            addFormats(ajv);
+            const validate = ajv.getSchema("https://raw.githubusercontent.com/educorvi/rita/main/src/schema/schema.json");
             Parser.parser = new Parser(validate)
         }
         return Parser.parser;
@@ -80,7 +85,7 @@ export default class Parser {
      * @param jsonRuleset the rule
      */
     public static parseRule(jsonRuleset: Record<string, any>): Rule {
-        return new Rule(jsonRuleset["id"], Parser.parseTerm(jsonRuleset["rule"]));
+        return new Rule(jsonRuleset["id"], Parser.parseTerm(jsonRuleset["rule"]), jsonRuleset["comment"]);
     }
 
     /**
@@ -91,6 +96,10 @@ export default class Parser {
         switch (jsonRuleset["type"]) {
             case "atom":
                 return Parser.parseAtom(jsonRuleset);
+            case "comparison":
+                return Parser.parseComparison(jsonRuleset);
+            case "calculation":
+                return Parser.parseCalculation(jsonRuleset);
             default:
                 return Parser.parseOperator(jsonRuleset);
         }
@@ -115,7 +124,7 @@ export default class Parser {
             case "xor":
                 return new Xor(parameters)
             default:
-                throw new Error("Invalid type: " + jsonRuleset["type"]);
+                throw new UnimplementedError(jsonRuleset["type"] + " is not implemented");
         }
     }
 
@@ -126,6 +135,43 @@ export default class Parser {
     public static parseAtom(jsonRuleset: Record<string, any>): Atom {
         return new Atom(jsonRuleset["path"]);
     }
+
+    private static parseComparisonParams(parameters: Array<number | string | Record<string, any>>): Array<(Atom | number | Date | string | Calculation)> {
+        const params = [];
+        for (const parameter of parameters) {
+            if (typeof parameter === "number") {
+                params.push(parameter);
+            } else if (typeof parameter === "string") {
+                params.push(testForDate(parameter));
+            } else {
+                params.push(<Atom | Calculation>this.parseTerm(parameter));
+            }
+        }
+        return params;
+    }
+
+    public static parseComparison(jsonRuleset: Record<string, any>): Comparison {
+        return new Comparison(this.parseComparisonParams(jsonRuleset["parameters"]), jsonRuleset["operation"]);
+    }
+
+    private static parseCalculationParams(parameters: Array<number | string | Record<string, any>>): Array<(Atom | number | Date | Calculation)> {
+        const params = [];
+        for (const parameter of parameters) {
+            if (typeof parameter === "number") {
+                params.push(parameter);
+            } else if (typeof parameter === "string") {
+                params.push(<Date>testForDate(parameter));
+            } else {
+                params.push(<Atom | Calculation>this.parseTerm(parameter));
+            }
+        }
+        return params;
+    }
+
+    public static parseCalculation(jsonRuleset: Record<string, any>): Calculation {
+        return new Calculation(this.parseCalculationParams(jsonRuleset["parameters"]),jsonRuleset["operation"], jsonRuleset["dateResultUnit"], jsonRuleset["dateCalculationUnit"])
+    }
+
 
     /**
      * Turn an array of rule objects back into a json ruleset
