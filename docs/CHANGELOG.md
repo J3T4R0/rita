@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/educorvi/rita/compare/v1.3.0...v1.3.1) (2021-11-19)
+
+
+### Bug Fixes
+
+* change scripts ([4baf0f5](https://github.com/educorvi/rita/commit/4baf0f5b4c0fc5eea33835879786ec5342a522a6))
+
 # [1.3.0](https://github.com/educorvi/rita/compare/v1.2.1...v1.3.0) (2021-11-19)
 
 
