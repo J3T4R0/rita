@@ -2,9 +2,14 @@ import Ajv from 'ajv/dist/2019';
 import addFormats from "ajv-formats"
 import {Parser} from "../src";
 import exampleRule from "./assets/example1.json"
-import exampleMath from "./assets/exampleMath.json"
+import exampleMathDefault from "./assets/exampleMath.json"
 import exampleMathSimple from "./assets/mathSimple.json"
 import wrongExampleRule from "./assets/example_wrong.json"
+import {DateTime} from "luxon";
+
+//Prevent timezone error when converting from json and back
+const exampleMath = JSON.parse(JSON.stringify(exampleMathDefault));
+exampleMath.rules[0].rule.parameters[0].parameters[0].parameters[0] = DateTime.fromJSDate(new Date()).toISO();
 
 const schemas = [
     {name: 'Atom', schema: () => import('../src/schema/atom.json')},
