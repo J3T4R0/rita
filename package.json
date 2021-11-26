@@ -2,7 +2,7 @@
   "name": "@educorvi/rita",
   "private": false,
   "description": "JSON Schema for rule-based evaluation and an Typescript Implementation to evaluate it",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
