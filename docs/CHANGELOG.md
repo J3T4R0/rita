@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/educorvi/rita/compare/v1.3.2...v1.3.3) (2021-11-26)
+
+
+### Bug Fixes
+
+* export Logger ([afee761](https://github.com/educorvi/rita/commit/afee761a5d087d346cdde6cd5390e8d518fd7086)), closes [#15](https://github.com/educorvi/rita/issues/15)
+
 ## [1.3.2](https://github.com/educorvi/rita/compare/v1.3.1...v1.3.2) (2021-11-19)
 
 
