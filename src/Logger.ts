@@ -1,4 +1,4 @@
-export default interface Logger {
+export interface Logger {
     log(data: any): void;
     debug(data: any): void;
     warn(data: any): void;
