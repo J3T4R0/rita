@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/educorvi/rita/compare/v1.3.1...v1.3.2) (2021-11-19)
+
+
+### Bug Fixes
+
+* include dist in release ([958f928](https://github.com/educorvi/rita/commit/958f9285b8536b061ecb88a86f44fe3e48186615))
+
 ## [1.3.1](https://github.com/educorvi/rita/compare/v1.3.0...v1.3.1) (2021-11-19)
 
 
