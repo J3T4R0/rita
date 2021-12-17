@@ -1,7 +1,7 @@
 import {Term} from "./Term"
 import {Atom} from "./Atom";
 import {Calculation, mapParameterToJSONReady} from "./Calculation";
-import {UnimplementedError} from "../Errors";
+import {RulesetError, UnimplementedError} from "../Errors";
 
 /**
  * Types of comparisons
@@ -48,6 +48,10 @@ export class Comparison extends Term {
     }
 
     evaluate(data: Record<string, any>): boolean {
+        if (!this.validate()) {
+            throw new RulesetError("Comparisons need exactly two parameters")
+        }
+
         //if one of the parameters is either an Atom or a Calculation evaluate it first
         const p1 = (this.parameters[0] instanceof Atom || this.parameters[0] instanceof Calculation) ? this.parameters[0].evaluate(data): this.parameters[0];
         const p2 = (this.parameters[1] instanceof Atom || this.parameters[1] instanceof Calculation)? this.parameters[1].evaluate(data):this.parameters[1];

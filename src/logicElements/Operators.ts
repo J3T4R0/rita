@@ -1,4 +1,5 @@
 import {Term} from "./Term"
+import {RulesetError} from "../Errors";
 
 /**
  * Parent class for all operators
@@ -42,7 +43,7 @@ export abstract class Operator extends Term {
 export class And extends Operator {
     evaluate(data: Record<string, any>): boolean {
         if (!this.validate()) {
-            throw new Error("'and' needs at least two parameters")
+            throw new RulesetError("'and' needs at least two parameters")
         }
 
         return this.evaluateReduce(data, (x1, x2) => x1 && x2, true)
@@ -67,7 +68,7 @@ export class And extends Operator {
 export class Not extends Operator{
     evaluate(data: Record<string, any>): boolean {
         if (!this.validate()) {
-            throw new Error("'not' accepts only one parameter")
+            throw new RulesetError("'not' accepts only one parameter")
         }
         return !this.parameters[0].evaluate(data);
     }
@@ -91,7 +92,7 @@ export class Not extends Operator{
 export class Or extends Operator {
     evaluate(data: Record<string, any>): boolean {
         if (!this.validate()) {
-            throw new Error("'or' needs at least two parameters")
+            throw new RulesetError("'or' needs at least two parameters")
         }
         return this.evaluateReduce(data, (x1, x2) => x1 || x2)
     }
@@ -128,7 +129,7 @@ export class Xor extends Operator {
 
     evaluate(data: Record<string, any>): boolean {
         if (!this.validate()) {
-            throw new Error("'xor' needs at least two parameters")
+            throw new RulesetError("'xor' needs at least two parameters")
         }
         return this.evaluateReduce(data, Xor.xor)
     }

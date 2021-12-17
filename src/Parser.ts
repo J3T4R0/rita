@@ -4,7 +4,7 @@ import schemas from "./schema"
 import {schema} from "./schema"
 import {AnyValidateFunction} from "ajv/dist/types";
 import addFormats from "ajv-formats";
-import {UnimplementedError} from "./Errors";
+import {InternalError, UnimplementedError} from "./Errors";
 import {Calculation} from "./logicElements/Calculation";
 
 /**
@@ -60,11 +60,11 @@ export default class Parser {
      */
     public validateRuleSetJSON(json: Record<string, any>): validationResult {
         if (!this.validate) {
-            throw new Error("Error compiling schema");
+            throw new InternalError("Error compiling schema");
         }
         let valid = this.validate(json);
         if (typeof valid !== "boolean") {
-            throw new Error("Error compiling schema")
+            throw new InternalError("Error compiling schema")
         }
         return {
             valid,
