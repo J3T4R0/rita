@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/educorvi/rita/compare/v1.3.4...v1.3.5) (2021-12-17)
+
+
+### Bug Fixes
+
+* better errors ([c6423af](https://github.com/educorvi/rita/commit/c6423af1096189c60b9e517d045ab265a7f824fd)), closes [#12](https://github.com/educorvi/rita/issues/12)
+
 ## [1.3.4](https://github.com/educorvi/rita/compare/v1.3.3...v1.3.4) (2021-11-26)
 
 
