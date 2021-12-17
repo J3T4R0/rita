@@ -2,6 +2,7 @@ import {Atom} from "./Atom";
 import {Term} from "./Term";
 import {assertNumberOrDate} from "../Assertions";
 import {DateTime, Duration} from "luxon";
+import {RulesetError} from "../Errors";
 
 /**
  * Possible units for time intervals
@@ -127,13 +128,17 @@ export class Calculation extends Term {
                 case operations.subtract:
                     return lDate.minus(duration).toJSDate();
                 default:
-                    throw new TypeError("Invalid Operation for Dates");
+                    throw new RulesetError("Invalid Operation for Dates");
             }
 
         }
     }
 
     evaluate(data: Record<string, any>): Date | number {
+        if (!this.validate()) {
+            throw new RulesetError("Calculations need at least two parameters")
+        }
+
         //Get the function matching our operation
         let func: (x1: any, x2: any) => number;
         switch (this.operation) {

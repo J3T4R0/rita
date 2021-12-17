@@ -1,5 +1,6 @@
 import {Term} from "./Term"
 import {DateTime} from "luxon";
+import {UndefinedPathError} from "../Errors";
 
 
 export function testForDate(val: string): string | Date {
@@ -40,7 +41,7 @@ export class Atom extends Term {
             if (k in o) {
                 o = o[k];
             } else {
-                throw new Error("Undefinded path in data: " + s)
+                throw new UndefinedPathError("Undefinded path in data: " + s)
             }
         }
         return o;
