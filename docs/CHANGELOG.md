@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/educorvi/rita/compare/v1.3.5...v1.3.6) (2022-01-05)
+
+
+### Bug Fixes
+
+* **implementation:** fix enum for comparisons ([d305b33](https://github.com/educorvi/rita/commit/d305b33455ae311cba0cea12a942ebe92ec60e22)), closes [#19](https://github.com/educorvi/rita/issues/19) [#20](https://github.com/educorvi/rita/issues/20)
+
 ## [1.3.5](https://github.com/educorvi/rita/compare/v1.3.4...v1.3.5) (2021-12-17)
 
 
