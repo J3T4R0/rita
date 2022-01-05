@@ -7,7 +7,7 @@ import {RulesetError, UnimplementedError} from "../Errors";
  * Types of comparisons
  */
 enum comparisons {
-    equals = "equals",
+    equals = "equal",
     smaller = "smaller",
     greater = "greater",
     smallerOrEqual = "smallerOrEqual",
@@ -70,7 +70,7 @@ export class Comparison extends Term {
             case comparisons.smallerOrEqual:
                 return p1 <= p2;
             default:
-                throw new UnimplementedError("Unknown operation");
+                throw new UnimplementedError("Unknown operation: "+this.operation);
         }
     }
 

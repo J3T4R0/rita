@@ -1,13 +1,14 @@
 import {Parser} from "../../src";
 // @ts-ignore
 import {exampleData, ruleTemplate} from "../assets/exampleData";
+import mathExample from "../assets/exampleMath.json"
 
 it("equals", () => {
     const rule = Parser.parseRule({
         ...ruleTemplate,
         rule: {
             type: "comparison",
-            operation: "equals",
+            operation: "equal",
             parameters: [
                 4, 4
             ]
@@ -21,7 +22,7 @@ it("name equals Julian", () => {
         ...ruleTemplate,
         rule: {
             type: "comparison",
-            operation: "equals",
+            operation: "equal",
             parameters: [
                 "Julian", {
                     type: "atom",
@@ -66,3 +67,7 @@ it("birthday before 27.02.2002, but other birthday", () => {
     expect(rule.evaluate(exampleData)).toBe(false);
 });
 
+it('run math example', () => {
+    const ruleset = Parser.parseRuleSet(mathExample);
+    expect(ruleset.evaluateAll(exampleData).result).toBe(true);
+});
